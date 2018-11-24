@@ -19,10 +19,6 @@
             "fieldType": "String"
         },
         {
-            "fieldName": "nit",
-            "fieldType": "Long"
-        },
-        {
             "fieldName": "email",
             "fieldType": "String"
         },
@@ -32,6 +28,10 @@
         },
         {
             "fieldName": "especiality",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "address",
             "fieldType": "String"
         }
     ],

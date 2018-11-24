@@ -52,9 +52,6 @@ public class PatientResourceIntTest {
     private static final String DEFAULT_MATERNO = "AAAAAAAAAA";
     private static final String UPDATED_MATERNO = "BBBBBBBBBB";
 
-    private static final Long DEFAULT_NIT = 1L;
-    private static final Long UPDATED_NIT = 2L;
-
     private static final String DEFAULT_EMAIL = "AAAAAAAAAA";
     private static final String UPDATED_EMAIL = "BBBBBBBBBB";
 
@@ -63,6 +60,9 @@ public class PatientResourceIntTest {
 
     private static final String DEFAULT_ESPECIALITY = "AAAAAAAAAA";
     private static final String UPDATED_ESPECIALITY = "BBBBBBBBBB";
+
+    private static final String DEFAULT_ADDRESS = "AAAAAAAAAA";
+    private static final String UPDATED_ADDRESS = "BBBBBBBBBB";
 
     @Autowired
     private PatientRepository patientRepository;
@@ -109,10 +109,10 @@ public class PatientResourceIntTest {
             .nombre(DEFAULT_NOMBRE)
             .paterno(DEFAULT_PATERNO)
             .materno(DEFAULT_MATERNO)
-            .nit(DEFAULT_NIT)
             .email(DEFAULT_EMAIL)
             .profession(DEFAULT_PROFESSION)
-            .especiality(DEFAULT_ESPECIALITY);
+            .especiality(DEFAULT_ESPECIALITY)
+            .address(DEFAULT_ADDRESS);
         return patient;
     }
 
@@ -140,10 +140,10 @@ public class PatientResourceIntTest {
         assertThat(testPatient.getNombre()).isEqualTo(DEFAULT_NOMBRE);
         assertThat(testPatient.getPaterno()).isEqualTo(DEFAULT_PATERNO);
         assertThat(testPatient.getMaterno()).isEqualTo(DEFAULT_MATERNO);
-        assertThat(testPatient.getNit()).isEqualTo(DEFAULT_NIT);
         assertThat(testPatient.getEmail()).isEqualTo(DEFAULT_EMAIL);
         assertThat(testPatient.getProfession()).isEqualTo(DEFAULT_PROFESSION);
         assertThat(testPatient.getEspeciality()).isEqualTo(DEFAULT_ESPECIALITY);
+        assertThat(testPatient.getAddress()).isEqualTo(DEFAULT_ADDRESS);
     }
 
     @Test
@@ -180,10 +180,10 @@ public class PatientResourceIntTest {
             .andExpect(jsonPath("$.[*].nombre").value(hasItem(DEFAULT_NOMBRE.toString())))
             .andExpect(jsonPath("$.[*].paterno").value(hasItem(DEFAULT_PATERNO.toString())))
             .andExpect(jsonPath("$.[*].materno").value(hasItem(DEFAULT_MATERNO.toString())))
-            .andExpect(jsonPath("$.[*].nit").value(hasItem(DEFAULT_NIT.intValue())))
             .andExpect(jsonPath("$.[*].email").value(hasItem(DEFAULT_EMAIL.toString())))
             .andExpect(jsonPath("$.[*].profession").value(hasItem(DEFAULT_PROFESSION.toString())))
-            .andExpect(jsonPath("$.[*].especiality").value(hasItem(DEFAULT_ESPECIALITY.toString())));
+            .andExpect(jsonPath("$.[*].especiality").value(hasItem(DEFAULT_ESPECIALITY.toString())))
+            .andExpect(jsonPath("$.[*].address").value(hasItem(DEFAULT_ADDRESS.toString())));
     }
     
     @Test
@@ -201,10 +201,10 @@ public class PatientResourceIntTest {
             .andExpect(jsonPath("$.nombre").value(DEFAULT_NOMBRE.toString()))
             .andExpect(jsonPath("$.paterno").value(DEFAULT_PATERNO.toString()))
             .andExpect(jsonPath("$.materno").value(DEFAULT_MATERNO.toString()))
-            .andExpect(jsonPath("$.nit").value(DEFAULT_NIT.intValue()))
             .andExpect(jsonPath("$.email").value(DEFAULT_EMAIL.toString()))
             .andExpect(jsonPath("$.profession").value(DEFAULT_PROFESSION.toString()))
-            .andExpect(jsonPath("$.especiality").value(DEFAULT_ESPECIALITY.toString()));
+            .andExpect(jsonPath("$.especiality").value(DEFAULT_ESPECIALITY.toString()))
+            .andExpect(jsonPath("$.address").value(DEFAULT_ADDRESS.toString()));
     }
 
     @Test
@@ -232,10 +232,10 @@ public class PatientResourceIntTest {
             .nombre(UPDATED_NOMBRE)
             .paterno(UPDATED_PATERNO)
             .materno(UPDATED_MATERNO)
-            .nit(UPDATED_NIT)
             .email(UPDATED_EMAIL)
             .profession(UPDATED_PROFESSION)
-            .especiality(UPDATED_ESPECIALITY);
+            .especiality(UPDATED_ESPECIALITY)
+            .address(UPDATED_ADDRESS);
 
         restPatientMockMvc.perform(put("/api/patients")
             .contentType(TestUtil.APPLICATION_JSON_UTF8)
@@ -250,10 +250,10 @@ public class PatientResourceIntTest {
         assertThat(testPatient.getNombre()).isEqualTo(UPDATED_NOMBRE);
         assertThat(testPatient.getPaterno()).isEqualTo(UPDATED_PATERNO);
         assertThat(testPatient.getMaterno()).isEqualTo(UPDATED_MATERNO);
-        assertThat(testPatient.getNit()).isEqualTo(UPDATED_NIT);
         assertThat(testPatient.getEmail()).isEqualTo(UPDATED_EMAIL);
         assertThat(testPatient.getProfession()).isEqualTo(UPDATED_PROFESSION);
         assertThat(testPatient.getEspeciality()).isEqualTo(UPDATED_ESPECIALITY);
+        assertThat(testPatient.getAddress()).isEqualTo(UPDATED_ADDRESS);
     }
 
     @Test

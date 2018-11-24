@@ -43,26 +43,8 @@ public class TypeAttentionResourceIntTest {
     private static final String DEFAULT_NAME = "AAAAAAAAAA";
     private static final String UPDATED_NAME = "BBBBBBBBBB";
 
-    private static final String DEFAULT_COMPANY = "AAAAAAAAAA";
-    private static final String UPDATED_COMPANY = "BBBBBBBBBB";
-
-    private static final String DEFAULT_TYPE = "AAAAAAAAAA";
-    private static final String UPDATED_TYPE = "BBBBBBBBBB";
-
-    private static final String DEFAULT_PHONE = "AAAAAAAAAA";
-    private static final String UPDATED_PHONE = "BBBBBBBBBB";
-
-    private static final String DEFAULT_DETAIL = "AAAAAAAAAA";
-    private static final String UPDATED_DETAIL = "BBBBBBBBBB";
-
-    private static final Integer DEFAULT_QUANTITY = 1;
-    private static final Integer UPDATED_QUANTITY = 2;
-
-    private static final Double DEFAULT_PRICE = 1D;
-    private static final Double UPDATED_PRICE = 2D;
-
-    private static final Long DEFAULT_ID_PROVIDER = 1L;
-    private static final Long UPDATED_ID_PROVIDER = 2L;
+    private static final String DEFAULT_DESCRIPTION = "AAAAAAAAAA";
+    private static final String UPDATED_DESCRIPTION = "BBBBBBBBBB";
 
     @Autowired
     private TypeAttentionRepository typeAttentionRepository;
@@ -106,13 +88,7 @@ public class TypeAttentionResourceIntTest {
     public static TypeAttention createEntity(EntityManager em) {
         TypeAttention typeAttention = new TypeAttention()
             .name(DEFAULT_NAME)
-            .company(DEFAULT_COMPANY)
-            .type(DEFAULT_TYPE)
-            .phone(DEFAULT_PHONE)
-            .detail(DEFAULT_DETAIL)
-            .quantity(DEFAULT_QUANTITY)
-            .price(DEFAULT_PRICE)
-            .idProvider(DEFAULT_ID_PROVIDER);
+            .description(DEFAULT_DESCRIPTION);
         return typeAttention;
     }
 
@@ -137,13 +113,7 @@ public class TypeAttentionResourceIntTest {
         assertThat(typeAttentionList).hasSize(databaseSizeBeforeCreate + 1);
         TypeAttention testTypeAttention = typeAttentionList.get(typeAttentionList.size() - 1);
         assertThat(testTypeAttention.getName()).isEqualTo(DEFAULT_NAME);
-        assertThat(testTypeAttention.getCompany()).isEqualTo(DEFAULT_COMPANY);
-        assertThat(testTypeAttention.getType()).isEqualTo(DEFAULT_TYPE);
-        assertThat(testTypeAttention.getPhone()).isEqualTo(DEFAULT_PHONE);
-        assertThat(testTypeAttention.getDetail()).isEqualTo(DEFAULT_DETAIL);
-        assertThat(testTypeAttention.getQuantity()).isEqualTo(DEFAULT_QUANTITY);
-        assertThat(testTypeAttention.getPrice()).isEqualTo(DEFAULT_PRICE);
-        assertThat(testTypeAttention.getIdProvider()).isEqualTo(DEFAULT_ID_PROVIDER);
+        assertThat(testTypeAttention.getDescription()).isEqualTo(DEFAULT_DESCRIPTION);
     }
 
     @Test
@@ -177,13 +147,7 @@ public class TypeAttentionResourceIntTest {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(typeAttention.getId().intValue())))
             .andExpect(jsonPath("$.[*].name").value(hasItem(DEFAULT_NAME.toString())))
-            .andExpect(jsonPath("$.[*].company").value(hasItem(DEFAULT_COMPANY.toString())))
-            .andExpect(jsonPath("$.[*].type").value(hasItem(DEFAULT_TYPE.toString())))
-            .andExpect(jsonPath("$.[*].phone").value(hasItem(DEFAULT_PHONE.toString())))
-            .andExpect(jsonPath("$.[*].detail").value(hasItem(DEFAULT_DETAIL.toString())))
-            .andExpect(jsonPath("$.[*].quantity").value(hasItem(DEFAULT_QUANTITY)))
-            .andExpect(jsonPath("$.[*].price").value(hasItem(DEFAULT_PRICE.doubleValue())))
-            .andExpect(jsonPath("$.[*].idProvider").value(hasItem(DEFAULT_ID_PROVIDER.intValue())));
+            .andExpect(jsonPath("$.[*].description").value(hasItem(DEFAULT_DESCRIPTION.toString())));
     }
     
     @Test
@@ -198,13 +162,7 @@ public class TypeAttentionResourceIntTest {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.id").value(typeAttention.getId().intValue()))
             .andExpect(jsonPath("$.name").value(DEFAULT_NAME.toString()))
-            .andExpect(jsonPath("$.company").value(DEFAULT_COMPANY.toString()))
-            .andExpect(jsonPath("$.type").value(DEFAULT_TYPE.toString()))
-            .andExpect(jsonPath("$.phone").value(DEFAULT_PHONE.toString()))
-            .andExpect(jsonPath("$.detail").value(DEFAULT_DETAIL.toString()))
-            .andExpect(jsonPath("$.quantity").value(DEFAULT_QUANTITY))
-            .andExpect(jsonPath("$.price").value(DEFAULT_PRICE.doubleValue()))
-            .andExpect(jsonPath("$.idProvider").value(DEFAULT_ID_PROVIDER.intValue()));
+            .andExpect(jsonPath("$.description").value(DEFAULT_DESCRIPTION.toString()));
     }
 
     @Test
@@ -229,13 +187,7 @@ public class TypeAttentionResourceIntTest {
         em.detach(updatedTypeAttention);
         updatedTypeAttention
             .name(UPDATED_NAME)
-            .company(UPDATED_COMPANY)
-            .type(UPDATED_TYPE)
-            .phone(UPDATED_PHONE)
-            .detail(UPDATED_DETAIL)
-            .quantity(UPDATED_QUANTITY)
-            .price(UPDATED_PRICE)
-            .idProvider(UPDATED_ID_PROVIDER);
+            .description(UPDATED_DESCRIPTION);
 
         restTypeAttentionMockMvc.perform(put("/api/type-attentions")
             .contentType(TestUtil.APPLICATION_JSON_UTF8)
@@ -247,13 +199,7 @@ public class TypeAttentionResourceIntTest {
         assertThat(typeAttentionList).hasSize(databaseSizeBeforeUpdate);
         TypeAttention testTypeAttention = typeAttentionList.get(typeAttentionList.size() - 1);
         assertThat(testTypeAttention.getName()).isEqualTo(UPDATED_NAME);
-        assertThat(testTypeAttention.getCompany()).isEqualTo(UPDATED_COMPANY);
-        assertThat(testTypeAttention.getType()).isEqualTo(UPDATED_TYPE);
-        assertThat(testTypeAttention.getPhone()).isEqualTo(UPDATED_PHONE);
-        assertThat(testTypeAttention.getDetail()).isEqualTo(UPDATED_DETAIL);
-        assertThat(testTypeAttention.getQuantity()).isEqualTo(UPDATED_QUANTITY);
-        assertThat(testTypeAttention.getPrice()).isEqualTo(UPDATED_PRICE);
-        assertThat(testTypeAttention.getIdProvider()).isEqualTo(UPDATED_ID_PROVIDER);
+        assertThat(testTypeAttention.getDescription()).isEqualTo(UPDATED_DESCRIPTION);
     }
 
     @Test

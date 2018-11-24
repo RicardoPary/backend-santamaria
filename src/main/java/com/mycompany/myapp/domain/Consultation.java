@@ -9,11 +9,11 @@ import java.time.LocalDate;
 import java.util.Objects;
 
 /**
- * A MedicalConsultation.
+ * A Consultation.
  */
 @Entity
-@Table(name = "medical_consultation")
-public class MedicalConsultation implements Serializable {
+@Table(name = "consultation")
+public class Consultation implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -57,7 +57,7 @@ public class MedicalConsultation implements Serializable {
         return Diagnosis;
     }
 
-    public MedicalConsultation Diagnosis(String Diagnosis) {
+    public Consultation Diagnosis(String Diagnosis) {
         this.Diagnosis = Diagnosis;
         return this;
     }
@@ -70,7 +70,7 @@ public class MedicalConsultation implements Serializable {
         return detail;
     }
 
-    public MedicalConsultation detail(String detail) {
+    public Consultation detail(String detail) {
         this.detail = detail;
         return this;
     }
@@ -83,7 +83,7 @@ public class MedicalConsultation implements Serializable {
         return idPatient;
     }
 
-    public MedicalConsultation idPatient(Long idPatient) {
+    public Consultation idPatient(Long idPatient) {
         this.idPatient = idPatient;
         return this;
     }
@@ -96,7 +96,7 @@ public class MedicalConsultation implements Serializable {
         return idStaff;
     }
 
-    public MedicalConsultation idStaff(Long idStaff) {
+    public Consultation idStaff(Long idStaff) {
         this.idStaff = idStaff;
         return this;
     }
@@ -109,7 +109,7 @@ public class MedicalConsultation implements Serializable {
         return idTypeAttention;
     }
 
-    public MedicalConsultation idTypeAttention(Long idTypeAttention) {
+    public Consultation idTypeAttention(Long idTypeAttention) {
         this.idTypeAttention = idTypeAttention;
         return this;
     }
@@ -122,7 +122,7 @@ public class MedicalConsultation implements Serializable {
         return date;
     }
 
-    public MedicalConsultation date(LocalDate date) {
+    public Consultation date(LocalDate date) {
         this.date = date;
         return this;
     }
@@ -135,7 +135,7 @@ public class MedicalConsultation implements Serializable {
         return supply;
     }
 
-    public MedicalConsultation supply(Supply supply) {
+    public Consultation supply(Supply supply) {
         this.supply = supply;
         return this;
     }
@@ -153,11 +153,11 @@ public class MedicalConsultation implements Serializable {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-        MedicalConsultation medicalConsultation = (MedicalConsultation) o;
-        if (medicalConsultation.getId() == null || getId() == null) {
+        Consultation consultation = (Consultation) o;
+        if (consultation.getId() == null || getId() == null) {
             return false;
         }
-        return Objects.equals(getId(), medicalConsultation.getId());
+        return Objects.equals(getId(), consultation.getId());
     }
 
     @Override
@@ -167,7 +167,7 @@ public class MedicalConsultation implements Serializable {
 
     @Override
     public String toString() {
-        return "MedicalConsultation{" +
+        return "Consultation{" +
             "id=" + getId() +
             ", Diagnosis='" + getDiagnosis() + "'" +
             ", detail='" + getDetail() + "'" +

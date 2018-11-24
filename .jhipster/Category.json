@@ -31,10 +31,6 @@
             "fieldName": "imageCache",
             "fieldType": "String",
             "fieldValidateRules": []
-        },
-        {
-            "fieldName": "idBranch",
-            "fieldType": "Long"
         }
     ],
     "changelogDate": "00000000000200",

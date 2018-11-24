@@ -21,23 +21,11 @@ public class Contract implements Serializable {
     @SequenceGenerator(name = "sequenceGenerator")
     private Long id;
 
-    @Column(name = "name")
-    private String name;
-
-    @Column(name = "amount")
-    private Double amount;
-
-    @Column(name = "description")
-    private String description;
-
-    @Column(name = "company")
-    private String company;
-
     @Column(name = "jhi_type")
     private String type;
 
-    @Column(name = "phone")
-    private String phone;
+    @Column(name = "salary")
+    private Double salary;
 
     @Column(name = "jhi_date")
     private LocalDate date;
@@ -54,58 +42,6 @@ public class Contract implements Serializable {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public Contract name(String name) {
-        this.name = name;
-        return this;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public Double getAmount() {
-        return amount;
-    }
-
-    public Contract amount(Double amount) {
-        this.amount = amount;
-        return this;
-    }
-
-    public void setAmount(Double amount) {
-        this.amount = amount;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public Contract description(String description) {
-        this.description = description;
-        return this;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public String getCompany() {
-        return company;
-    }
-
-    public Contract company(String company) {
-        this.company = company;
-        return this;
-    }
-
-    public void setCompany(String company) {
-        this.company = company;
-    }
-
     public String getType() {
         return type;
     }
@@ -119,17 +55,17 @@ public class Contract implements Serializable {
         this.type = type;
     }
 
-    public String getPhone() {
-        return phone;
+    public Double getSalary() {
+        return salary;
     }
 
-    public Contract phone(String phone) {
-        this.phone = phone;
+    public Contract salary(Double salary) {
+        this.salary = salary;
         return this;
     }
 
-    public void setPhone(String phone) {
-        this.phone = phone;
+    public void setSalary(Double salary) {
+        this.salary = salary;
     }
 
     public LocalDate getDate() {
@@ -183,12 +119,8 @@ public class Contract implements Serializable {
     public String toString() {
         return "Contract{" +
             "id=" + getId() +
-            ", name='" + getName() + "'" +
-            ", amount=" + getAmount() +
-            ", description='" + getDescription() + "'" +
-            ", company='" + getCompany() + "'" +
             ", type='" + getType() + "'" +
-            ", phone='" + getPhone() + "'" +
+            ", salary=" + getSalary() +
             ", date='" + getDate() + "'" +
             ", idStaff=" + getIdStaff() +
             "}";

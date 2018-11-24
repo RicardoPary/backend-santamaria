@@ -1,18 +1,17 @@
 package com.mycompany.myapp.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
 
 import java.io.Serializable;
-import java.math.BigDecimal;
-import java.time.LocalDate;
 import java.util.Objects;
 
 /**
  * A MedicalConsultationDetails.
  */
 @Entity
-@Table(name = "medical_consultation_detail")
+@Table(name = "medical_consultation_details")
 public class MedicalConsultationDetails implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -22,50 +21,24 @@ public class MedicalConsultationDetails implements Serializable {
     @SequenceGenerator(name = "sequenceGenerator")
     private Long id;
 
-    @Column(name = "observation")
-    private String observation;
+    @Column(name = "name")
+    private String name;
 
     @Column(name = "detail")
     private String detail;
 
-    @Column(name = "name")
-    private String name;
+    @Column(name = "quantity")
+    private Integer quantity;
 
-    @Column(name = "quantity", precision = 10, scale = 2)
-    private BigDecimal quantity;
+    @Column(name = "id_staff")
+    private Long idStaff;
 
-    @Column(name = "price", precision = 10, scale = 2)
-    private BigDecimal price;
+    @Column(name = "id_supply")
+    private Long idSupply;
 
-    @Column(name = "subtotal", precision = 10, scale = 2)
-    private BigDecimal subtotal;
-
-    @Column(name = "id_product")
-    private Long idProduct;
-
-    @Column(name = "initial_current_stock")
-    private Integer initialCurrentStock;
-
-    @Column(name = "final_current_stock")
-    private Integer finalCurrentStock;
-
-    @Column(name = "type_method")
-    private String typeMethod;
-
-    @Column(name = "discount")
-    private Double discount;
-
-    @Column(name = "id_invoice")
-    private Long idInvoice;
-
-    @Column(name = "id_branch")
-    private Long idBranch;
-
-    @Column(name = "id_box")
-    private Long idBox;
-
-    @Column(name = "jhi_date")
-    private LocalDate date;
+    @ManyToOne
+    @JsonIgnoreProperties("")
+    private MedicalConsultation medicalConsultation;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
@@ -74,32 +47,6 @@ public class MedicalConsultationDetails implements Serializable {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public String getObservation() {
-        return observation;
-    }
-
-    public MedicalConsultationDetails observation(String observation) {
-        this.observation = observation;
-        return this;
-    }
-
-    public void setObservation(String observation) {
-        this.observation = observation;
-    }
-
-    public String getDetail() {
-        return detail;
-    }
-
-    public MedicalConsultationDetails detail(String detail) {
-        this.detail = detail;
-        return this;
-    }
-
-    public void setDetail(String detail) {
-        this.detail = detail;
     }
 
     public String getName() {
@@ -115,160 +62,69 @@ public class MedicalConsultationDetails implements Serializable {
         this.name = name;
     }
 
-    public BigDecimal getQuantity() {
+    public String getDetail() {
+        return detail;
+    }
+
+    public MedicalConsultationDetails detail(String detail) {
+        this.detail = detail;
+        return this;
+    }
+
+    public void setDetail(String detail) {
+        this.detail = detail;
+    }
+
+    public Integer getQuantity() {
         return quantity;
     }
 
-    public MedicalConsultationDetails quantity(BigDecimal quantity) {
+    public MedicalConsultationDetails quantity(Integer quantity) {
         this.quantity = quantity;
         return this;
     }
 
-    public void setQuantity(BigDecimal quantity) {
+    public void setQuantity(Integer quantity) {
         this.quantity = quantity;
     }
 
-    public BigDecimal getPrice() {
-        return price;
+    public Long getIdStaff() {
+        return idStaff;
     }
 
-    public MedicalConsultationDetails price(BigDecimal price) {
-        this.price = price;
+    public MedicalConsultationDetails idStaff(Long idStaff) {
+        this.idStaff = idStaff;
         return this;
     }
 
-    public void setPrice(BigDecimal price) {
-        this.price = price;
+    public void setIdStaff(Long idStaff) {
+        this.idStaff = idStaff;
     }
 
-    public BigDecimal getSubtotal() {
-        return subtotal;
+    public Long getIdSupply() {
+        return idSupply;
     }
 
-    public MedicalConsultationDetails subtotal(BigDecimal subtotal) {
-        this.subtotal = subtotal;
+    public MedicalConsultationDetails idSupply(Long idSupply) {
+        this.idSupply = idSupply;
         return this;
     }
 
-    public void setSubtotal(BigDecimal subtotal) {
-        this.subtotal = subtotal;
+    public void setIdSupply(Long idSupply) {
+        this.idSupply = idSupply;
     }
 
-    public Long getIdProduct() {
-        return idProduct;
+    public MedicalConsultation getMedicalConsultation() {
+        return medicalConsultation;
     }
 
-    public MedicalConsultationDetails idProduct(Long idProduct) {
-        this.idProduct = idProduct;
+    public MedicalConsultationDetails medicalConsultation(MedicalConsultation medicalConsultation) {
+        this.medicalConsultation = medicalConsultation;
         return this;
     }
 
-    public void setIdProduct(Long idProduct) {
-        this.idProduct = idProduct;
-    }
-
-    public Integer getInitialCurrentStock() {
-        return initialCurrentStock;
-    }
-
-    public MedicalConsultationDetails initialCurrentStock(Integer initialCurrentStock) {
-        this.initialCurrentStock = initialCurrentStock;
-        return this;
-    }
-
-    public void setInitialCurrentStock(Integer initialCurrentStock) {
-        this.initialCurrentStock = initialCurrentStock;
-    }
-
-    public Integer getFinalCurrentStock() {
-        return finalCurrentStock;
-    }
-
-    public MedicalConsultationDetails finalCurrentStock(Integer finalCurrentStock) {
-        this.finalCurrentStock = finalCurrentStock;
-        return this;
-    }
-
-    public void setFinalCurrentStock(Integer finalCurrentStock) {
-        this.finalCurrentStock = finalCurrentStock;
-    }
-
-    public String getTypeMethod() {
-        return typeMethod;
-    }
-
-    public MedicalConsultationDetails typeMethod(String typeMethod) {
-        this.typeMethod = typeMethod;
-        return this;
-    }
-
-    public void setTypeMethod(String typeMethod) {
-        this.typeMethod = typeMethod;
-    }
-
-    public Double getDiscount() {
-        return discount;
-    }
-
-    public MedicalConsultationDetails discount(Double discount) {
-        this.discount = discount;
-        return this;
-    }
-
-    public void setDiscount(Double discount) {
-        this.discount = discount;
-    }
-
-    public Long getIdInvoice() {
-        return idInvoice;
-    }
-
-    public MedicalConsultationDetails idInvoice(Long idInvoice) {
-        this.idInvoice = idInvoice;
-        return this;
-    }
-
-    public void setIdInvoice(Long idInvoice) {
-        this.idInvoice = idInvoice;
-    }
-
-    public Long getIdBranch() {
-        return idBranch;
-    }
-
-    public MedicalConsultationDetails idBranch(Long idBranch) {
-        this.idBranch = idBranch;
-        return this;
-    }
-
-    public void setIdBranch(Long idBranch) {
-        this.idBranch = idBranch;
-    }
-
-    public Long getIdBox() {
-        return idBox;
-    }
-
-    public MedicalConsultationDetails idBox(Long idBox) {
-        this.idBox = idBox;
-        return this;
-    }
-
-    public void setIdBox(Long idBox) {
-        this.idBox = idBox;
-    }
-
-    public LocalDate getDate() {
-        return date;
-    }
-
-    public MedicalConsultationDetails date(LocalDate date) {
-        this.date = date;
-        return this;
-    }
-
-    public void setDate(LocalDate date) {
-        this.date = date;
+    public void setMedicalConsultation(MedicalConsultation medicalConsultation) {
+        this.medicalConsultation = medicalConsultation;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 
@@ -296,21 +152,11 @@ public class MedicalConsultationDetails implements Serializable {
     public String toString() {
         return "MedicalConsultationDetails{" +
             "id=" + getId() +
-            ", observation='" + getObservation() + "'" +
-            ", detail='" + getDetail() + "'" +
             ", name='" + getName() + "'" +
+            ", detail='" + getDetail() + "'" +
             ", quantity=" + getQuantity() +
-            ", price=" + getPrice() +
-            ", subtotal=" + getSubtotal() +
-            ", idProduct=" + getIdProduct() +
-            ", initialCurrentStock=" + getInitialCurrentStock() +
-            ", finalCurrentStock=" + getFinalCurrentStock() +
-            ", typeMethod='" + getTypeMethod() + "'" +
-            ", discount=" + getDiscount() +
-            ", idInvoice=" + getIdInvoice() +
-            ", idBranch=" + getIdBranch() +
-            ", idBox=" + getIdBox() +
-            ", date='" + getDate() + "'" +
+            ", idStaff=" + getIdStaff() +
+            ", idSupply=" + getIdSupply() +
             "}";
     }
 }

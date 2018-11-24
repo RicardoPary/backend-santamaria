@@ -45,20 +45,11 @@ public class MedicalHistoryResourceIntTest {
     private static final String DEFAULT_NAME = "AAAAAAAAAA";
     private static final String UPDATED_NAME = "BBBBBBBBBB";
 
-    private static final Double DEFAULT_AMOUNT = 1D;
-    private static final Double UPDATED_AMOUNT = 2D;
-
     private static final String DEFAULT_DESCRIPTION = "AAAAAAAAAA";
     private static final String UPDATED_DESCRIPTION = "BBBBBBBBBB";
 
-    private static final String DEFAULT_COMPANY = "AAAAAAAAAA";
-    private static final String UPDATED_COMPANY = "BBBBBBBBBB";
-
     private static final String DEFAULT_TYPE = "AAAAAAAAAA";
     private static final String UPDATED_TYPE = "BBBBBBBBBB";
-
-    private static final String DEFAULT_PHONE = "AAAAAAAAAA";
-    private static final String UPDATED_PHONE = "BBBBBBBBBB";
 
     private static final LocalDate DEFAULT_DATE = LocalDate.ofEpochDay(0L);
     private static final LocalDate UPDATED_DATE = LocalDate.now(ZoneId.systemDefault());
@@ -108,11 +99,8 @@ public class MedicalHistoryResourceIntTest {
     public static MedicalHistory createEntity(EntityManager em) {
         MedicalHistory medicalHistory = new MedicalHistory()
             .name(DEFAULT_NAME)
-            .amount(DEFAULT_AMOUNT)
             .description(DEFAULT_DESCRIPTION)
-            .company(DEFAULT_COMPANY)
             .type(DEFAULT_TYPE)
-            .phone(DEFAULT_PHONE)
             .date(DEFAULT_DATE)
             .idStaff(DEFAULT_ID_STAFF);
         return medicalHistory;
@@ -139,11 +127,8 @@ public class MedicalHistoryResourceIntTest {
         assertThat(medicalHistoryList).hasSize(databaseSizeBeforeCreate + 1);
         MedicalHistory testMedicalHistory = medicalHistoryList.get(medicalHistoryList.size() - 1);
         assertThat(testMedicalHistory.getName()).isEqualTo(DEFAULT_NAME);
-        assertThat(testMedicalHistory.getAmount()).isEqualTo(DEFAULT_AMOUNT);
         assertThat(testMedicalHistory.getDescription()).isEqualTo(DEFAULT_DESCRIPTION);
-        assertThat(testMedicalHistory.getCompany()).isEqualTo(DEFAULT_COMPANY);
         assertThat(testMedicalHistory.getType()).isEqualTo(DEFAULT_TYPE);
-        assertThat(testMedicalHistory.getPhone()).isEqualTo(DEFAULT_PHONE);
         assertThat(testMedicalHistory.getDate()).isEqualTo(DEFAULT_DATE);
         assertThat(testMedicalHistory.getIdStaff()).isEqualTo(DEFAULT_ID_STAFF);
     }
@@ -179,11 +164,8 @@ public class MedicalHistoryResourceIntTest {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(medicalHistory.getId().intValue())))
             .andExpect(jsonPath("$.[*].name").value(hasItem(DEFAULT_NAME.toString())))
-            .andExpect(jsonPath("$.[*].amount").value(hasItem(DEFAULT_AMOUNT.doubleValue())))
             .andExpect(jsonPath("$.[*].description").value(hasItem(DEFAULT_DESCRIPTION.toString())))
-            .andExpect(jsonPath("$.[*].company").value(hasItem(DEFAULT_COMPANY.toString())))
             .andExpect(jsonPath("$.[*].type").value(hasItem(DEFAULT_TYPE.toString())))
-            .andExpect(jsonPath("$.[*].phone").value(hasItem(DEFAULT_PHONE.toString())))
             .andExpect(jsonPath("$.[*].date").value(hasItem(DEFAULT_DATE.toString())))
             .andExpect(jsonPath("$.[*].idStaff").value(hasItem(DEFAULT_ID_STAFF.intValue())));
     }
@@ -200,11 +182,8 @@ public class MedicalHistoryResourceIntTest {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.id").value(medicalHistory.getId().intValue()))
             .andExpect(jsonPath("$.name").value(DEFAULT_NAME.toString()))
-            .andExpect(jsonPath("$.amount").value(DEFAULT_AMOUNT.doubleValue()))
             .andExpect(jsonPath("$.description").value(DEFAULT_DESCRIPTION.toString()))
-            .andExpect(jsonPath("$.company").value(DEFAULT_COMPANY.toString()))
             .andExpect(jsonPath("$.type").value(DEFAULT_TYPE.toString()))
-            .andExpect(jsonPath("$.phone").value(DEFAULT_PHONE.toString()))
             .andExpect(jsonPath("$.date").value(DEFAULT_DATE.toString()))
             .andExpect(jsonPath("$.idStaff").value(DEFAULT_ID_STAFF.intValue()));
     }
@@ -231,11 +210,8 @@ public class MedicalHistoryResourceIntTest {
         em.detach(updatedMedicalHistory);
         updatedMedicalHistory
             .name(UPDATED_NAME)
-            .amount(UPDATED_AMOUNT)
             .description(UPDATED_DESCRIPTION)
-            .company(UPDATED_COMPANY)
             .type(UPDATED_TYPE)
-            .phone(UPDATED_PHONE)
             .date(UPDATED_DATE)
             .idStaff(UPDATED_ID_STAFF);
 
@@ -249,11 +225,8 @@ public class MedicalHistoryResourceIntTest {
         assertThat(medicalHistoryList).hasSize(databaseSizeBeforeUpdate);
         MedicalHistory testMedicalHistory = medicalHistoryList.get(medicalHistoryList.size() - 1);
         assertThat(testMedicalHistory.getName()).isEqualTo(UPDATED_NAME);
-        assertThat(testMedicalHistory.getAmount()).isEqualTo(UPDATED_AMOUNT);
         assertThat(testMedicalHistory.getDescription()).isEqualTo(UPDATED_DESCRIPTION);
-        assertThat(testMedicalHistory.getCompany()).isEqualTo(UPDATED_COMPANY);
         assertThat(testMedicalHistory.getType()).isEqualTo(UPDATED_TYPE);
-        assertThat(testMedicalHistory.getPhone()).isEqualTo(UPDATED_PHONE);
         assertThat(testMedicalHistory.getDate()).isEqualTo(UPDATED_DATE);
         assertThat(testMedicalHistory.getIdStaff()).isEqualTo(UPDATED_ID_STAFF);
     }

@@ -63,9 +63,6 @@ public class Supply implements Serializable {
     @Column(name = "inventory")
     private Boolean inventory;
 
-    @Column(name = "id_branch")
-    private Long idBranch;
-
     @ManyToOne
     @JsonIgnoreProperties("")
     private Category category;
@@ -261,19 +258,6 @@ public class Supply implements Serializable {
         this.inventory = inventory;
     }
 
-    public Long getIdBranch() {
-        return idBranch;
-    }
-
-    public Supply idBranch(Long idBranch) {
-        this.idBranch = idBranch;
-        return this;
-    }
-
-    public void setIdBranch(Long idBranch) {
-        this.idBranch = idBranch;
-    }
-
     public Category getCategory() {
         return category;
     }
@@ -326,7 +310,6 @@ public class Supply implements Serializable {
             ", imageName='" + getImageName() + "'" +
             ", imageCache='" + getImageCache() + "'" +
             ", inventory='" + isInventory() + "'" +
-            ", idBranch=" + getIdBranch() +
             "}";
     }
 }

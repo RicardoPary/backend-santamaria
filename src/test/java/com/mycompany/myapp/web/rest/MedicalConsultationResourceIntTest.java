@@ -22,6 +22,8 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
+import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.List;
 
 
@@ -40,29 +42,23 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @SpringBootTest(classes = SantamariaApp.class)
 public class MedicalConsultationResourceIntTest {
 
-    private static final String DEFAULT_NAME = "AAAAAAAAAA";
-    private static final String UPDATED_NAME = "BBBBBBBBBB";
-
-    private static final String DEFAULT_COMPANY = "AAAAAAAAAA";
-    private static final String UPDATED_COMPANY = "BBBBBBBBBB";
-
-    private static final String DEFAULT_TYPE = "AAAAAAAAAA";
-    private static final String UPDATED_TYPE = "BBBBBBBBBB";
-
-    private static final String DEFAULT_PHONE = "AAAAAAAAAA";
-    private static final String UPDATED_PHONE = "BBBBBBBBBB";
+    private static final String DEFAULT_DIAGNOSIS = "AAAAAAAAAA";
+    private static final String UPDATED_DIAGNOSIS = "BBBBBBBBBB";
 
     private static final String DEFAULT_DETAIL = "AAAAAAAAAA";
     private static final String UPDATED_DETAIL = "BBBBBBBBBB";
 
-    private static final Integer DEFAULT_QUANTITY = 1;
-    private static final Integer UPDATED_QUANTITY = 2;
+    private static final Long DEFAULT_ID_PATIENT = 1L;
+    private static final Long UPDATED_ID_PATIENT = 2L;
 
-    private static final Double DEFAULT_PRICE = 1D;
-    private static final Double UPDATED_PRICE = 2D;
+    private static final Long DEFAULT_ID_STAFF = 1L;
+    private static final Long UPDATED_ID_STAFF = 2L;
 
-    private static final Long DEFAULT_ID_PROVIDER = 1L;
-    private static final Long UPDATED_ID_PROVIDER = 2L;
+    private static final Long DEFAULT_ID_TYPE_ATTENTION = 1L;
+    private static final Long UPDATED_ID_TYPE_ATTENTION = 2L;
+
+    private static final LocalDate DEFAULT_DATE = LocalDate.ofEpochDay(0L);
+    private static final LocalDate UPDATED_DATE = LocalDate.now(ZoneId.systemDefault());
 
     @Autowired
     private MedicalConsultationRepository medicalConsultationRepository;
@@ -105,14 +101,12 @@ public class MedicalConsultationResourceIntTest {
      */
     public static MedicalConsultation createEntity(EntityManager em) {
         MedicalConsultation medicalConsultation = new MedicalConsultation()
-            .name(DEFAULT_NAME)
-            .company(DEFAULT_COMPANY)
-            .type(DEFAULT_TYPE)
-            .phone(DEFAULT_PHONE)
+            .Diagnosis(DEFAULT_DIAGNOSIS)
             .detail(DEFAULT_DETAIL)
-            .quantity(DEFAULT_QUANTITY)
-            .price(DEFAULT_PRICE)
-            .idProvider(DEFAULT_ID_PROVIDER);
+            .idPatient(DEFAULT_ID_PATIENT)
+            .idStaff(DEFAULT_ID_STAFF)
+            .idTypeAttention(DEFAULT_ID_TYPE_ATTENTION)
+            .date(DEFAULT_DATE);
         return medicalConsultation;
     }
 
@@ -136,14 +130,12 @@ public class MedicalConsultationResourceIntTest {
         List<MedicalConsultation> medicalConsultationList = medicalConsultationRepository.findAll();
         assertThat(medicalConsultationList).hasSize(databaseSizeBeforeCreate + 1);
         MedicalConsultation testMedicalConsultation = medicalConsultationList.get(medicalConsultationList.size() - 1);
-        assertThat(testMedicalConsultation.getName()).isEqualTo(DEFAULT_NAME);
-        assertThat(testMedicalConsultation.getCompany()).isEqualTo(DEFAULT_COMPANY);
-        assertThat(testMedicalConsultation.getType()).isEqualTo(DEFAULT_TYPE);
-        assertThat(testMedicalConsultation.getPhone()).isEqualTo(DEFAULT_PHONE);
+        assertThat(testMedicalConsultation.getDiagnosis()).isEqualTo(DEFAULT_DIAGNOSIS);
         assertThat(testMedicalConsultation.getDetail()).isEqualTo(DEFAULT_DETAIL);
-        assertThat(testMedicalConsultation.getQuantity()).isEqualTo(DEFAULT_QUANTITY);
-        assertThat(testMedicalConsultation.getPrice()).isEqualTo(DEFAULT_PRICE);
-        assertThat(testMedicalConsultation.getIdProvider()).isEqualTo(DEFAULT_ID_PROVIDER);
+        assertThat(testMedicalConsultation.getIdPatient()).isEqualTo(DEFAULT_ID_PATIENT);
+        assertThat(testMedicalConsultation.getIdStaff()).isEqualTo(DEFAULT_ID_STAFF);
+        assertThat(testMedicalConsultation.getIdTypeAttention()).isEqualTo(DEFAULT_ID_TYPE_ATTENTION);
+        assertThat(testMedicalConsultation.getDate()).isEqualTo(DEFAULT_DATE);
     }
 
     @Test
@@ -176,14 +168,12 @@ public class MedicalConsultationResourceIntTest {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(medicalConsultation.getId().intValue())))
-            .andExpect(jsonPath("$.[*].name").value(hasItem(DEFAULT_NAME.toString())))
-            .andExpect(jsonPath("$.[*].company").value(hasItem(DEFAULT_COMPANY.toString())))
-            .andExpect(jsonPath("$.[*].type").value(hasItem(DEFAULT_TYPE.toString())))
-            .andExpect(jsonPath("$.[*].phone").value(hasItem(DEFAULT_PHONE.toString())))
+            .andExpect(jsonPath("$.[*].Diagnosis").value(hasItem(DEFAULT_DIAGNOSIS.toString())))
             .andExpect(jsonPath("$.[*].detail").value(hasItem(DEFAULT_DETAIL.toString())))
-            .andExpect(jsonPath("$.[*].quantity").value(hasItem(DEFAULT_QUANTITY)))
-            .andExpect(jsonPath("$.[*].price").value(hasItem(DEFAULT_PRICE.doubleValue())))
-            .andExpect(jsonPath("$.[*].idProvider").value(hasItem(DEFAULT_ID_PROVIDER.intValue())));
+            .andExpect(jsonPath("$.[*].idPatient").value(hasItem(DEFAULT_ID_PATIENT.intValue())))
+            .andExpect(jsonPath("$.[*].idStaff").value(hasItem(DEFAULT_ID_STAFF.intValue())))
+            .andExpect(jsonPath("$.[*].idTypeAttention").value(hasItem(DEFAULT_ID_TYPE_ATTENTION.intValue())))
+            .andExpect(jsonPath("$.[*].date").value(hasItem(DEFAULT_DATE.toString())));
     }
     
     @Test
@@ -197,14 +187,12 @@ public class MedicalConsultationResourceIntTest {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.id").value(medicalConsultation.getId().intValue()))
-            .andExpect(jsonPath("$.name").value(DEFAULT_NAME.toString()))
-            .andExpect(jsonPath("$.company").value(DEFAULT_COMPANY.toString()))
-            .andExpect(jsonPath("$.type").value(DEFAULT_TYPE.toString()))
-            .andExpect(jsonPath("$.phone").value(DEFAULT_PHONE.toString()))
+            .andExpect(jsonPath("$.Diagnosis").value(DEFAULT_DIAGNOSIS.toString()))
             .andExpect(jsonPath("$.detail").value(DEFAULT_DETAIL.toString()))
-            .andExpect(jsonPath("$.quantity").value(DEFAULT_QUANTITY))
-            .andExpect(jsonPath("$.price").value(DEFAULT_PRICE.doubleValue()))
-            .andExpect(jsonPath("$.idProvider").value(DEFAULT_ID_PROVIDER.intValue()));
+            .andExpect(jsonPath("$.idPatient").value(DEFAULT_ID_PATIENT.intValue()))
+            .andExpect(jsonPath("$.idStaff").value(DEFAULT_ID_STAFF.intValue()))
+            .andExpect(jsonPath("$.idTypeAttention").value(DEFAULT_ID_TYPE_ATTENTION.intValue()))
+            .andExpect(jsonPath("$.date").value(DEFAULT_DATE.toString()));
     }
 
     @Test
@@ -228,14 +216,12 @@ public class MedicalConsultationResourceIntTest {
         // Disconnect from session so that the updates on updatedMedicalConsultation are not directly saved in db
         em.detach(updatedMedicalConsultation);
         updatedMedicalConsultation
-            .name(UPDATED_NAME)
-            .company(UPDATED_COMPANY)
-            .type(UPDATED_TYPE)
-            .phone(UPDATED_PHONE)
+            .Diagnosis(UPDATED_DIAGNOSIS)
             .detail(UPDATED_DETAIL)
-            .quantity(UPDATED_QUANTITY)
-            .price(UPDATED_PRICE)
-            .idProvider(UPDATED_ID_PROVIDER);
+            .idPatient(UPDATED_ID_PATIENT)
+            .idStaff(UPDATED_ID_STAFF)
+            .idTypeAttention(UPDATED_ID_TYPE_ATTENTION)
+            .date(UPDATED_DATE);
 
         restMedicalConsultationMockMvc.perform(put("/api/medical-consultations")
             .contentType(TestUtil.APPLICATION_JSON_UTF8)
@@ -246,14 +232,12 @@ public class MedicalConsultationResourceIntTest {
         List<MedicalConsultation> medicalConsultationList = medicalConsultationRepository.findAll();
         assertThat(medicalConsultationList).hasSize(databaseSizeBeforeUpdate);
         MedicalConsultation testMedicalConsultation = medicalConsultationList.get(medicalConsultationList.size() - 1);
-        assertThat(testMedicalConsultation.getName()).isEqualTo(UPDATED_NAME);
-        assertThat(testMedicalConsultation.getCompany()).isEqualTo(UPDATED_COMPANY);
-        assertThat(testMedicalConsultation.getType()).isEqualTo(UPDATED_TYPE);
-        assertThat(testMedicalConsultation.getPhone()).isEqualTo(UPDATED_PHONE);
+        assertThat(testMedicalConsultation.getDiagnosis()).isEqualTo(UPDATED_DIAGNOSIS);
         assertThat(testMedicalConsultation.getDetail()).isEqualTo(UPDATED_DETAIL);
-        assertThat(testMedicalConsultation.getQuantity()).isEqualTo(UPDATED_QUANTITY);
-        assertThat(testMedicalConsultation.getPrice()).isEqualTo(UPDATED_PRICE);
-        assertThat(testMedicalConsultation.getIdProvider()).isEqualTo(UPDATED_ID_PROVIDER);
+        assertThat(testMedicalConsultation.getIdPatient()).isEqualTo(UPDATED_ID_PATIENT);
+        assertThat(testMedicalConsultation.getIdStaff()).isEqualTo(UPDATED_ID_STAFF);
+        assertThat(testMedicalConsultation.getIdTypeAttention()).isEqualTo(UPDATED_ID_TYPE_ATTENTION);
+        assertThat(testMedicalConsultation.getDate()).isEqualTo(UPDATED_DATE);
     }
 
     @Test

@@ -10,19 +10,7 @@
     ],
     "fields": [
         {
-            "fieldName": "name",
-            "fieldType": "String"
-        },
-        {
-            "fieldName": "company",
-            "fieldType": "String"
-        },
-        {
-            "fieldName": "type",
-            "fieldType": "String"
-        },
-        {
-            "fieldName": "phone",
+            "fieldName": "Diagnosis",
             "fieldType": "String"
         },
         {
@@ -30,22 +18,26 @@
             "fieldType": "String"
         },
         {
-            "fieldName": "quantity",
-            "fieldType": "Integer"
-        },
-        {
-            "fieldName": "price",
-            "fieldType": "Double"
-        },
-        {
-            "fieldName": "idProvider",
+            "fieldName": "idPatient",
             "fieldType": "Long"
+        },
+        {
+            "fieldName": "idStaff",
+            "fieldType": "Long"
+        },
+        {
+            "fieldName": "idTypeAttention",
+            "fieldType": "Long"
+        },
+        {
+            "fieldName": "date",
+            "fieldType": "LocalDate"
         }
     ],
     "changelogDate": "00000000000600",
     "dto": "no",
     "service": "serviceClass",
-    "entityTableName": "medical_consultation",
+    "entityTableName": "consultation",
     "jpaMetamodelFiltering": false,
     "pagination": "pager"
 }

@@ -38,9 +38,6 @@ public class Category implements Serializable {
     @Column(name = "image_cache")
     private String imageCache;
 
-    @Column(name = "id_branch")
-    private Long idBranch;
-
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
         return id;
@@ -127,19 +124,6 @@ public class Category implements Serializable {
     public void setImageCache(String imageCache) {
         this.imageCache = imageCache;
     }
-
-    public Long getIdBranch() {
-        return idBranch;
-    }
-
-    public Category idBranch(Long idBranch) {
-        this.idBranch = idBranch;
-        return this;
-    }
-
-    public void setIdBranch(Long idBranch) {
-        this.idBranch = idBranch;
-    }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 
     @Override
@@ -172,7 +156,6 @@ public class Category implements Serializable {
             ", imageUrl='" + getImageUrl() + "'" +
             ", imageName='" + getImageName() + "'" +
             ", imageCache='" + getImageCache() + "'" +
-            ", idBranch=" + getIdBranch() +
             "}";
     }
 }

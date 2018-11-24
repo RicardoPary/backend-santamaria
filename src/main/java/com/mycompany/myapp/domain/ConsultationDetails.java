@@ -8,11 +8,11 @@ import java.io.Serializable;
 import java.util.Objects;
 
 /**
- * A Inventory.
+ * A ConsultationDetails.
  */
 @Entity
-@Table(name = "inventory")
-public class Inventory implements Serializable {
+@Table(name = "consultation_details")
+public class ConsultationDetails implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -24,17 +24,11 @@ public class Inventory implements Serializable {
     @Column(name = "name")
     private String name;
 
-    @Column(name = "jhi_type")
-    private String type;
-
     @Column(name = "detail")
     private String detail;
 
     @Column(name = "quantity")
     private Integer quantity;
-
-    @Column(name = "price")
-    private Double price;
 
     @Column(name = "id_staff")
     private Long idStaff;
@@ -44,7 +38,7 @@ public class Inventory implements Serializable {
 
     @ManyToOne
     @JsonIgnoreProperties("")
-    private Supply supply;
+    private Consultation consultation;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
@@ -59,7 +53,7 @@ public class Inventory implements Serializable {
         return name;
     }
 
-    public Inventory name(String name) {
+    public ConsultationDetails name(String name) {
         this.name = name;
         return this;
     }
@@ -68,24 +62,11 @@ public class Inventory implements Serializable {
         this.name = name;
     }
 
-    public String getType() {
-        return type;
-    }
-
-    public Inventory type(String type) {
-        this.type = type;
-        return this;
-    }
-
-    public void setType(String type) {
-        this.type = type;
-    }
-
     public String getDetail() {
         return detail;
     }
 
-    public Inventory detail(String detail) {
+    public ConsultationDetails detail(String detail) {
         this.detail = detail;
         return this;
     }
@@ -98,7 +79,7 @@ public class Inventory implements Serializable {
         return quantity;
     }
 
-    public Inventory quantity(Integer quantity) {
+    public ConsultationDetails quantity(Integer quantity) {
         this.quantity = quantity;
         return this;
     }
@@ -107,24 +88,11 @@ public class Inventory implements Serializable {
         this.quantity = quantity;
     }
 
-    public Double getPrice() {
-        return price;
-    }
-
-    public Inventory price(Double price) {
-        this.price = price;
-        return this;
-    }
-
-    public void setPrice(Double price) {
-        this.price = price;
-    }
-
     public Long getIdStaff() {
         return idStaff;
     }
 
-    public Inventory idStaff(Long idStaff) {
+    public ConsultationDetails idStaff(Long idStaff) {
         this.idStaff = idStaff;
         return this;
     }
@@ -137,7 +105,7 @@ public class Inventory implements Serializable {
         return idSupply;
     }
 
-    public Inventory idSupply(Long idSupply) {
+    public ConsultationDetails idSupply(Long idSupply) {
         this.idSupply = idSupply;
         return this;
     }
@@ -146,17 +114,17 @@ public class Inventory implements Serializable {
         this.idSupply = idSupply;
     }
 
-    public Supply getSupply() {
-        return supply;
+    public Consultation getConsultation() {
+        return consultation;
     }
 
-    public Inventory supply(Supply supply) {
-        this.supply = supply;
+    public ConsultationDetails consultation(Consultation consultation) {
+        this.consultation = consultation;
         return this;
     }
 
-    public void setSupply(Supply supply) {
-        this.supply = supply;
+    public void setConsultation(Consultation consultation) {
+        this.consultation = consultation;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 
@@ -168,11 +136,11 @@ public class Inventory implements Serializable {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-        Inventory inventory = (Inventory) o;
-        if (inventory.getId() == null || getId() == null) {
+        ConsultationDetails consultationDetails = (ConsultationDetails) o;
+        if (consultationDetails.getId() == null || getId() == null) {
             return false;
         }
-        return Objects.equals(getId(), inventory.getId());
+        return Objects.equals(getId(), consultationDetails.getId());
     }
 
     @Override
@@ -182,13 +150,11 @@ public class Inventory implements Serializable {
 
     @Override
     public String toString() {
-        return "Inventory{" +
+        return "ConsultationDetails{" +
             "id=" + getId() +
             ", name='" + getName() + "'" +
-            ", type='" + getType() + "'" +
             ", detail='" + getDetail() + "'" +
             ", quantity=" + getQuantity() +
-            ", price=" + getPrice() +
             ", idStaff=" + getIdStaff() +
             ", idSupply=" + getIdSupply() +
             "}";

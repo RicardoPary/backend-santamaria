@@ -42,23 +42,11 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @SpringBootTest(classes = SantamariaApp.class)
 public class ContractResourceIntTest {
 
-    private static final String DEFAULT_NAME = "AAAAAAAAAA";
-    private static final String UPDATED_NAME = "BBBBBBBBBB";
-
-    private static final Double DEFAULT_AMOUNT = 1D;
-    private static final Double UPDATED_AMOUNT = 2D;
-
-    private static final String DEFAULT_DESCRIPTION = "AAAAAAAAAA";
-    private static final String UPDATED_DESCRIPTION = "BBBBBBBBBB";
-
-    private static final String DEFAULT_COMPANY = "AAAAAAAAAA";
-    private static final String UPDATED_COMPANY = "BBBBBBBBBB";
-
     private static final String DEFAULT_TYPE = "AAAAAAAAAA";
     private static final String UPDATED_TYPE = "BBBBBBBBBB";
 
-    private static final String DEFAULT_PHONE = "AAAAAAAAAA";
-    private static final String UPDATED_PHONE = "BBBBBBBBBB";
+    private static final Double DEFAULT_SALARY = 1D;
+    private static final Double UPDATED_SALARY = 2D;
 
     private static final LocalDate DEFAULT_DATE = LocalDate.ofEpochDay(0L);
     private static final LocalDate UPDATED_DATE = LocalDate.now(ZoneId.systemDefault());
@@ -107,12 +95,8 @@ public class ContractResourceIntTest {
      */
     public static Contract createEntity(EntityManager em) {
         Contract contract = new Contract()
-            .name(DEFAULT_NAME)
-            .amount(DEFAULT_AMOUNT)
-            .description(DEFAULT_DESCRIPTION)
-            .company(DEFAULT_COMPANY)
             .type(DEFAULT_TYPE)
-            .phone(DEFAULT_PHONE)
+            .salary(DEFAULT_SALARY)
             .date(DEFAULT_DATE)
             .idStaff(DEFAULT_ID_STAFF);
         return contract;
@@ -138,12 +122,8 @@ public class ContractResourceIntTest {
         List<Contract> contractList = contractRepository.findAll();
         assertThat(contractList).hasSize(databaseSizeBeforeCreate + 1);
         Contract testContract = contractList.get(contractList.size() - 1);
-        assertThat(testContract.getName()).isEqualTo(DEFAULT_NAME);
-        assertThat(testContract.getAmount()).isEqualTo(DEFAULT_AMOUNT);
-        assertThat(testContract.getDescription()).isEqualTo(DEFAULT_DESCRIPTION);
-        assertThat(testContract.getCompany()).isEqualTo(DEFAULT_COMPANY);
         assertThat(testContract.getType()).isEqualTo(DEFAULT_TYPE);
-        assertThat(testContract.getPhone()).isEqualTo(DEFAULT_PHONE);
+        assertThat(testContract.getSalary()).isEqualTo(DEFAULT_SALARY);
         assertThat(testContract.getDate()).isEqualTo(DEFAULT_DATE);
         assertThat(testContract.getIdStaff()).isEqualTo(DEFAULT_ID_STAFF);
     }
@@ -178,12 +158,8 @@ public class ContractResourceIntTest {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(contract.getId().intValue())))
-            .andExpect(jsonPath("$.[*].name").value(hasItem(DEFAULT_NAME.toString())))
-            .andExpect(jsonPath("$.[*].amount").value(hasItem(DEFAULT_AMOUNT.doubleValue())))
-            .andExpect(jsonPath("$.[*].description").value(hasItem(DEFAULT_DESCRIPTION.toString())))
-            .andExpect(jsonPath("$.[*].company").value(hasItem(DEFAULT_COMPANY.toString())))
             .andExpect(jsonPath("$.[*].type").value(hasItem(DEFAULT_TYPE.toString())))
-            .andExpect(jsonPath("$.[*].phone").value(hasItem(DEFAULT_PHONE.toString())))
+            .andExpect(jsonPath("$.[*].salary").value(hasItem(DEFAULT_SALARY.doubleValue())))
             .andExpect(jsonPath("$.[*].date").value(hasItem(DEFAULT_DATE.toString())))
             .andExpect(jsonPath("$.[*].idStaff").value(hasItem(DEFAULT_ID_STAFF.intValue())));
     }
@@ -199,12 +175,8 @@ public class ContractResourceIntTest {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.id").value(contract.getId().intValue()))
-            .andExpect(jsonPath("$.name").value(DEFAULT_NAME.toString()))
-            .andExpect(jsonPath("$.amount").value(DEFAULT_AMOUNT.doubleValue()))
-            .andExpect(jsonPath("$.description").value(DEFAULT_DESCRIPTION.toString()))
-            .andExpect(jsonPath("$.company").value(DEFAULT_COMPANY.toString()))
             .andExpect(jsonPath("$.type").value(DEFAULT_TYPE.toString()))
-            .andExpect(jsonPath("$.phone").value(DEFAULT_PHONE.toString()))
+            .andExpect(jsonPath("$.salary").value(DEFAULT_SALARY.doubleValue()))
             .andExpect(jsonPath("$.date").value(DEFAULT_DATE.toString()))
             .andExpect(jsonPath("$.idStaff").value(DEFAULT_ID_STAFF.intValue()));
     }
@@ -230,12 +202,8 @@ public class ContractResourceIntTest {
         // Disconnect from session so that the updates on updatedContract are not directly saved in db
         em.detach(updatedContract);
         updatedContract
-            .name(UPDATED_NAME)
-            .amount(UPDATED_AMOUNT)
-            .description(UPDATED_DESCRIPTION)
-            .company(UPDATED_COMPANY)
             .type(UPDATED_TYPE)
-            .phone(UPDATED_PHONE)
+            .salary(UPDATED_SALARY)
             .date(UPDATED_DATE)
             .idStaff(UPDATED_ID_STAFF);
 
@@ -248,12 +216,8 @@ public class ContractResourceIntTest {
         List<Contract> contractList = contractRepository.findAll();
         assertThat(contractList).hasSize(databaseSizeBeforeUpdate);
         Contract testContract = contractList.get(contractList.size() - 1);
-        assertThat(testContract.getName()).isEqualTo(UPDATED_NAME);
-        assertThat(testContract.getAmount()).isEqualTo(UPDATED_AMOUNT);
-        assertThat(testContract.getDescription()).isEqualTo(UPDATED_DESCRIPTION);
-        assertThat(testContract.getCompany()).isEqualTo(UPDATED_COMPANY);
         assertThat(testContract.getType()).isEqualTo(UPDATED_TYPE);
-        assertThat(testContract.getPhone()).isEqualTo(UPDATED_PHONE);
+        assertThat(testContract.getSalary()).isEqualTo(UPDATED_SALARY);
         assertThat(testContract.getDate()).isEqualTo(UPDATED_DATE);
         assertThat(testContract.getIdStaff()).isEqualTo(UPDATED_ID_STAFF);
     }

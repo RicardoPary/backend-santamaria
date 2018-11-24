@@ -2,8 +2,8 @@
     "fluentMethods": true,
     "relationships": [
         {
-            "relationshipName": "supply",
-            "otherEntityName": "supply",
+            "relationshipName": "consultation",
+            "otherEntityName": "consultation",
             "relationshipType": "many-to-one",
             "otherEntityField": "id"
         }
@@ -11,10 +11,6 @@
     "fields": [
         {
             "fieldName": "name",
-            "fieldType": "String"
-        },
-        {
-            "fieldName": "type",
             "fieldType": "String"
         },
         {
@@ -26,10 +22,6 @@
             "fieldType": "Integer"
         },
         {
-            "fieldName": "price",
-            "fieldType": "Double"
-        },
-        {
             "fieldName": "idStaff",
             "fieldType": "Long"
         },
@@ -38,10 +30,10 @@
             "fieldType": "Long"
         }
     ],
-    "changelogDate": "00000000000500",
+    "changelogDate": "00000000000700",
     "dto": "no",
     "service": "serviceClass",
-    "entityTableName": "inventory",
+    "entityTableName": "consultation_details",
     "jpaMetamodelFiltering": false,
     "pagination": "pager"
 }

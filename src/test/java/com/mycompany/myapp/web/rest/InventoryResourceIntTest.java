@@ -43,14 +43,8 @@ public class InventoryResourceIntTest {
     private static final String DEFAULT_NAME = "AAAAAAAAAA";
     private static final String UPDATED_NAME = "BBBBBBBBBB";
 
-    private static final String DEFAULT_COMPANY = "AAAAAAAAAA";
-    private static final String UPDATED_COMPANY = "BBBBBBBBBB";
-
     private static final String DEFAULT_TYPE = "AAAAAAAAAA";
     private static final String UPDATED_TYPE = "BBBBBBBBBB";
-
-    private static final String DEFAULT_PHONE = "AAAAAAAAAA";
-    private static final String UPDATED_PHONE = "BBBBBBBBBB";
 
     private static final String DEFAULT_DETAIL = "AAAAAAAAAA";
     private static final String UPDATED_DETAIL = "BBBBBBBBBB";
@@ -61,8 +55,11 @@ public class InventoryResourceIntTest {
     private static final Double DEFAULT_PRICE = 1D;
     private static final Double UPDATED_PRICE = 2D;
 
-    private static final Long DEFAULT_ID_PROVIDER = 1L;
-    private static final Long UPDATED_ID_PROVIDER = 2L;
+    private static final Long DEFAULT_ID_STAFF = 1L;
+    private static final Long UPDATED_ID_STAFF = 2L;
+
+    private static final Long DEFAULT_ID_SUPPLY = 1L;
+    private static final Long UPDATED_ID_SUPPLY = 2L;
 
     @Autowired
     private InventoryRepository inventoryRepository;
@@ -106,13 +103,12 @@ public class InventoryResourceIntTest {
     public static Inventory createEntity(EntityManager em) {
         Inventory inventory = new Inventory()
             .name(DEFAULT_NAME)
-            .company(DEFAULT_COMPANY)
             .type(DEFAULT_TYPE)
-            .phone(DEFAULT_PHONE)
             .detail(DEFAULT_DETAIL)
             .quantity(DEFAULT_QUANTITY)
             .price(DEFAULT_PRICE)
-            .idProvider(DEFAULT_ID_PROVIDER);
+            .idStaff(DEFAULT_ID_STAFF)
+            .idSupply(DEFAULT_ID_SUPPLY);
         return inventory;
     }
 
@@ -137,13 +133,12 @@ public class InventoryResourceIntTest {
         assertThat(inventoryList).hasSize(databaseSizeBeforeCreate + 1);
         Inventory testInventory = inventoryList.get(inventoryList.size() - 1);
         assertThat(testInventory.getName()).isEqualTo(DEFAULT_NAME);
-        assertThat(testInventory.getCompany()).isEqualTo(DEFAULT_COMPANY);
         assertThat(testInventory.getType()).isEqualTo(DEFAULT_TYPE);
-        assertThat(testInventory.getPhone()).isEqualTo(DEFAULT_PHONE);
         assertThat(testInventory.getDetail()).isEqualTo(DEFAULT_DETAIL);
         assertThat(testInventory.getQuantity()).isEqualTo(DEFAULT_QUANTITY);
         assertThat(testInventory.getPrice()).isEqualTo(DEFAULT_PRICE);
-        assertThat(testInventory.getIdProvider()).isEqualTo(DEFAULT_ID_PROVIDER);
+        assertThat(testInventory.getIdStaff()).isEqualTo(DEFAULT_ID_STAFF);
+        assertThat(testInventory.getIdSupply()).isEqualTo(DEFAULT_ID_SUPPLY);
     }
 
     @Test
@@ -177,13 +172,12 @@ public class InventoryResourceIntTest {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(inventory.getId().intValue())))
             .andExpect(jsonPath("$.[*].name").value(hasItem(DEFAULT_NAME.toString())))
-            .andExpect(jsonPath("$.[*].company").value(hasItem(DEFAULT_COMPANY.toString())))
             .andExpect(jsonPath("$.[*].type").value(hasItem(DEFAULT_TYPE.toString())))
-            .andExpect(jsonPath("$.[*].phone").value(hasItem(DEFAULT_PHONE.toString())))
             .andExpect(jsonPath("$.[*].detail").value(hasItem(DEFAULT_DETAIL.toString())))
             .andExpect(jsonPath("$.[*].quantity").value(hasItem(DEFAULT_QUANTITY)))
             .andExpect(jsonPath("$.[*].price").value(hasItem(DEFAULT_PRICE.doubleValue())))
-            .andExpect(jsonPath("$.[*].idProvider").value(hasItem(DEFAULT_ID_PROVIDER.intValue())));
+            .andExpect(jsonPath("$.[*].idStaff").value(hasItem(DEFAULT_ID_STAFF.intValue())))
+            .andExpect(jsonPath("$.[*].idSupply").value(hasItem(DEFAULT_ID_SUPPLY.intValue())));
     }
     
     @Test
@@ -198,13 +192,12 @@ public class InventoryResourceIntTest {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.id").value(inventory.getId().intValue()))
             .andExpect(jsonPath("$.name").value(DEFAULT_NAME.toString()))
-            .andExpect(jsonPath("$.company").value(DEFAULT_COMPANY.toString()))
             .andExpect(jsonPath("$.type").value(DEFAULT_TYPE.toString()))
-            .andExpect(jsonPath("$.phone").value(DEFAULT_PHONE.toString()))
             .andExpect(jsonPath("$.detail").value(DEFAULT_DETAIL.toString()))
             .andExpect(jsonPath("$.quantity").value(DEFAULT_QUANTITY))
             .andExpect(jsonPath("$.price").value(DEFAULT_PRICE.doubleValue()))
-            .andExpect(jsonPath("$.idProvider").value(DEFAULT_ID_PROVIDER.intValue()));
+            .andExpect(jsonPath("$.idStaff").value(DEFAULT_ID_STAFF.intValue()))
+            .andExpect(jsonPath("$.idSupply").value(DEFAULT_ID_SUPPLY.intValue()));
     }
 
     @Test
@@ -229,13 +222,12 @@ public class InventoryResourceIntTest {
         em.detach(updatedInventory);
         updatedInventory
             .name(UPDATED_NAME)
-            .company(UPDATED_COMPANY)
             .type(UPDATED_TYPE)
-            .phone(UPDATED_PHONE)
             .detail(UPDATED_DETAIL)
             .quantity(UPDATED_QUANTITY)
             .price(UPDATED_PRICE)
-            .idProvider(UPDATED_ID_PROVIDER);
+            .idStaff(UPDATED_ID_STAFF)
+            .idSupply(UPDATED_ID_SUPPLY);
 
         restInventoryMockMvc.perform(put("/api/inventories")
             .contentType(TestUtil.APPLICATION_JSON_UTF8)
@@ -247,13 +239,12 @@ public class InventoryResourceIntTest {
         assertThat(inventoryList).hasSize(databaseSizeBeforeUpdate);
         Inventory testInventory = inventoryList.get(inventoryList.size() - 1);
         assertThat(testInventory.getName()).isEqualTo(UPDATED_NAME);
-        assertThat(testInventory.getCompany()).isEqualTo(UPDATED_COMPANY);
         assertThat(testInventory.getType()).isEqualTo(UPDATED_TYPE);
-        assertThat(testInventory.getPhone()).isEqualTo(UPDATED_PHONE);
         assertThat(testInventory.getDetail()).isEqualTo(UPDATED_DETAIL);
         assertThat(testInventory.getQuantity()).isEqualTo(UPDATED_QUANTITY);
         assertThat(testInventory.getPrice()).isEqualTo(UPDATED_PRICE);
-        assertThat(testInventory.getIdProvider()).isEqualTo(UPDATED_ID_PROVIDER);
+        assertThat(testInventory.getIdStaff()).isEqualTo(UPDATED_ID_STAFF);
+        assertThat(testInventory.getIdSupply()).isEqualTo(UPDATED_ID_SUPPLY);
     }
 
     @Test

@@ -52,8 +52,6 @@ public class SupplyCriteria implements Serializable {
 
     private BooleanFilter inventory;
 
-    private LongFilter idBranch;
-
     private LongFilter categoryId;
 
     public SupplyCriteria() {
@@ -179,14 +177,6 @@ public class SupplyCriteria implements Serializable {
         this.inventory = inventory;
     }
 
-    public LongFilter getIdBranch() {
-        return idBranch;
-    }
-
-    public void setIdBranch(LongFilter idBranch) {
-        this.idBranch = idBranch;
-    }
-
     public LongFilter getCategoryId() {
         return categoryId;
     }
@@ -221,7 +211,6 @@ public class SupplyCriteria implements Serializable {
             Objects.equals(imageName, that.imageName) &&
             Objects.equals(imageCache, that.imageCache) &&
             Objects.equals(inventory, that.inventory) &&
-            Objects.equals(idBranch, that.idBranch) &&
             Objects.equals(categoryId, that.categoryId);
     }
 
@@ -243,7 +232,6 @@ public class SupplyCriteria implements Serializable {
         imageName,
         imageCache,
         inventory,
-        idBranch,
         categoryId
         );
     }
@@ -266,7 +254,6 @@ public class SupplyCriteria implements Serializable {
                 (imageName != null ? "imageName=" + imageName + ", " : "") +
                 (imageCache != null ? "imageCache=" + imageCache + ", " : "") +
                 (inventory != null ? "inventory=" + inventory + ", " : "") +
-                (idBranch != null ? "idBranch=" + idBranch + ", " : "") +
                 (categoryId != null ? "categoryId=" + categoryId + ", " : "") +
             "}";
     }

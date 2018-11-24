@@ -32,9 +32,6 @@ public class Staff implements Serializable {
     @Column(name = "materno")
     private String materno;
 
-    @Column(name = "nit")
-    private Long nit;
-
     @Column(name = "email")
     private String email;
 
@@ -43,6 +40,9 @@ public class Staff implements Serializable {
 
     @Column(name = "especiality")
     private String especiality;
+
+    @Column(name = "address")
+    private String address;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
@@ -105,19 +105,6 @@ public class Staff implements Serializable {
         this.materno = materno;
     }
 
-    public Long getNit() {
-        return nit;
-    }
-
-    public Staff nit(Long nit) {
-        this.nit = nit;
-        return this;
-    }
-
-    public void setNit(Long nit) {
-        this.nit = nit;
-    }
-
     public String getEmail() {
         return email;
     }
@@ -156,6 +143,19 @@ public class Staff implements Serializable {
     public void setEspeciality(String especiality) {
         this.especiality = especiality;
     }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public Staff address(String address) {
+        this.address = address;
+        return this;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 
     @Override
@@ -186,10 +186,10 @@ public class Staff implements Serializable {
             ", nombre='" + getNombre() + "'" +
             ", paterno='" + getPaterno() + "'" +
             ", materno='" + getMaterno() + "'" +
-            ", nit=" + getNit() +
             ", email='" + getEmail() + "'" +
             ", profession='" + getProfession() + "'" +
             ", especiality='" + getEspeciality() + "'" +
+            ", address='" + getAddress() + "'" +
             "}";
     }
 }

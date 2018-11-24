@@ -85,9 +85,6 @@ public class SupplyResourceIntTest {
     private static final Boolean DEFAULT_INVENTORY = false;
     private static final Boolean UPDATED_INVENTORY = true;
 
-    private static final Long DEFAULT_ID_BRANCH = 1L;
-    private static final Long UPDATED_ID_BRANCH = 2L;
-
     @Autowired
     private SupplyRepository supplyRepository;
 
@@ -145,8 +142,7 @@ public class SupplyResourceIntTest {
             .urlImage(DEFAULT_URL_IMAGE)
             .imageName(DEFAULT_IMAGE_NAME)
             .imageCache(DEFAULT_IMAGE_CACHE)
-            .inventory(DEFAULT_INVENTORY)
-            .idBranch(DEFAULT_ID_BRANCH);
+            .inventory(DEFAULT_INVENTORY);
         return supply;
     }
 
@@ -184,7 +180,6 @@ public class SupplyResourceIntTest {
         assertThat(testSupply.getImageName()).isEqualTo(DEFAULT_IMAGE_NAME);
         assertThat(testSupply.getImageCache()).isEqualTo(DEFAULT_IMAGE_CACHE);
         assertThat(testSupply.isInventory()).isEqualTo(DEFAULT_INVENTORY);
-        assertThat(testSupply.getIdBranch()).isEqualTo(DEFAULT_ID_BRANCH);
     }
 
     @Test
@@ -230,8 +225,7 @@ public class SupplyResourceIntTest {
             .andExpect(jsonPath("$.[*].urlImage").value(hasItem(DEFAULT_URL_IMAGE.toString())))
             .andExpect(jsonPath("$.[*].imageName").value(hasItem(DEFAULT_IMAGE_NAME.toString())))
             .andExpect(jsonPath("$.[*].imageCache").value(hasItem(DEFAULT_IMAGE_CACHE.toString())))
-            .andExpect(jsonPath("$.[*].inventory").value(hasItem(DEFAULT_INVENTORY.booleanValue())))
-            .andExpect(jsonPath("$.[*].idBranch").value(hasItem(DEFAULT_ID_BRANCH.intValue())));
+            .andExpect(jsonPath("$.[*].inventory").value(hasItem(DEFAULT_INVENTORY.booleanValue())));
     }
     
     @Test
@@ -258,8 +252,7 @@ public class SupplyResourceIntTest {
             .andExpect(jsonPath("$.urlImage").value(DEFAULT_URL_IMAGE.toString()))
             .andExpect(jsonPath("$.imageName").value(DEFAULT_IMAGE_NAME.toString()))
             .andExpect(jsonPath("$.imageCache").value(DEFAULT_IMAGE_CACHE.toString()))
-            .andExpect(jsonPath("$.inventory").value(DEFAULT_INVENTORY.booleanValue()))
-            .andExpect(jsonPath("$.idBranch").value(DEFAULT_ID_BRANCH.intValue()));
+            .andExpect(jsonPath("$.inventory").value(DEFAULT_INVENTORY.booleanValue()));
     }
 
     @Test
@@ -837,72 +830,6 @@ public class SupplyResourceIntTest {
 
     @Test
     @Transactional
-    public void getAllSuppliesByIdBranchIsEqualToSomething() throws Exception {
-        // Initialize the database
-        supplyRepository.saveAndFlush(supply);
-
-        // Get all the supplyList where idBranch equals to DEFAULT_ID_BRANCH
-        defaultSupplyShouldBeFound("idBranch.equals=" + DEFAULT_ID_BRANCH);
-
-        // Get all the supplyList where idBranch equals to UPDATED_ID_BRANCH
-        defaultSupplyShouldNotBeFound("idBranch.equals=" + UPDATED_ID_BRANCH);
-    }
-
-    @Test
-    @Transactional
-    public void getAllSuppliesByIdBranchIsInShouldWork() throws Exception {
-        // Initialize the database
-        supplyRepository.saveAndFlush(supply);
-
-        // Get all the supplyList where idBranch in DEFAULT_ID_BRANCH or UPDATED_ID_BRANCH
-        defaultSupplyShouldBeFound("idBranch.in=" + DEFAULT_ID_BRANCH + "," + UPDATED_ID_BRANCH);
-
-        // Get all the supplyList where idBranch equals to UPDATED_ID_BRANCH
-        defaultSupplyShouldNotBeFound("idBranch.in=" + UPDATED_ID_BRANCH);
-    }
-
-    @Test
-    @Transactional
-    public void getAllSuppliesByIdBranchIsNullOrNotNull() throws Exception {
-        // Initialize the database
-        supplyRepository.saveAndFlush(supply);
-
-        // Get all the supplyList where idBranch is not null
-        defaultSupplyShouldBeFound("idBranch.specified=true");
-
-        // Get all the supplyList where idBranch is null
-        defaultSupplyShouldNotBeFound("idBranch.specified=false");
-    }
-
-    @Test
-    @Transactional
-    public void getAllSuppliesByIdBranchIsGreaterThanOrEqualToSomething() throws Exception {
-        // Initialize the database
-        supplyRepository.saveAndFlush(supply);
-
-        // Get all the supplyList where idBranch greater than or equals to DEFAULT_ID_BRANCH
-        defaultSupplyShouldBeFound("idBranch.greaterOrEqualThan=" + DEFAULT_ID_BRANCH);
-
-        // Get all the supplyList where idBranch greater than or equals to UPDATED_ID_BRANCH
-        defaultSupplyShouldNotBeFound("idBranch.greaterOrEqualThan=" + UPDATED_ID_BRANCH);
-    }
-
-    @Test
-    @Transactional
-    public void getAllSuppliesByIdBranchIsLessThanSomething() throws Exception {
-        // Initialize the database
-        supplyRepository.saveAndFlush(supply);
-
-        // Get all the supplyList where idBranch less than or equals to DEFAULT_ID_BRANCH
-        defaultSupplyShouldNotBeFound("idBranch.lessThan=" + DEFAULT_ID_BRANCH);
-
-        // Get all the supplyList where idBranch less than or equals to UPDATED_ID_BRANCH
-        defaultSupplyShouldBeFound("idBranch.lessThan=" + UPDATED_ID_BRANCH);
-    }
-
-
-    @Test
-    @Transactional
     public void getAllSuppliesByCategoryIsEqualToSomething() throws Exception {
         // Initialize the database
         Category category = CategoryResourceIntTest.createEntity(em);
@@ -940,8 +867,7 @@ public class SupplyResourceIntTest {
             .andExpect(jsonPath("$.[*].urlImage").value(hasItem(DEFAULT_URL_IMAGE.toString())))
             .andExpect(jsonPath("$.[*].imageName").value(hasItem(DEFAULT_IMAGE_NAME.toString())))
             .andExpect(jsonPath("$.[*].imageCache").value(hasItem(DEFAULT_IMAGE_CACHE.toString())))
-            .andExpect(jsonPath("$.[*].inventory").value(hasItem(DEFAULT_INVENTORY.booleanValue())))
-            .andExpect(jsonPath("$.[*].idBranch").value(hasItem(DEFAULT_ID_BRANCH.intValue())));
+            .andExpect(jsonPath("$.[*].inventory").value(hasItem(DEFAULT_INVENTORY.booleanValue())));
 
         // Check, that the count call also returns 1
         restSupplyMockMvc.perform(get("/api/supplies/count?sort=id,desc&" + filter))
@@ -1002,8 +928,7 @@ public class SupplyResourceIntTest {
             .urlImage(UPDATED_URL_IMAGE)
             .imageName(UPDATED_IMAGE_NAME)
             .imageCache(UPDATED_IMAGE_CACHE)
-            .inventory(UPDATED_INVENTORY)
-            .idBranch(UPDATED_ID_BRANCH);
+            .inventory(UPDATED_INVENTORY);
 
         restSupplyMockMvc.perform(put("/api/supplies")
             .contentType(TestUtil.APPLICATION_JSON_UTF8)
@@ -1028,7 +953,6 @@ public class SupplyResourceIntTest {
         assertThat(testSupply.getImageName()).isEqualTo(UPDATED_IMAGE_NAME);
         assertThat(testSupply.getImageCache()).isEqualTo(UPDATED_IMAGE_CACHE);
         assertThat(testSupply.isInventory()).isEqualTo(UPDATED_INVENTORY);
-        assertThat(testSupply.getIdBranch()).isEqualTo(UPDATED_ID_BRANCH);
     }
 
     @Test

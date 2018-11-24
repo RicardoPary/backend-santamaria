@@ -58,9 +58,6 @@ public class CategoryResourceIntTest {
     private static final String DEFAULT_IMAGE_CACHE = "AAAAAAAAAA";
     private static final String UPDATED_IMAGE_CACHE = "BBBBBBBBBB";
 
-    private static final Long DEFAULT_ID_BRANCH = 1L;
-    private static final Long UPDATED_ID_BRANCH = 2L;
-
     @Autowired
     private CategoryRepository categoryRepository;
 
@@ -107,8 +104,7 @@ public class CategoryResourceIntTest {
             .description(DEFAULT_DESCRIPTION)
             .imageUrl(DEFAULT_IMAGE_URL)
             .imageName(DEFAULT_IMAGE_NAME)
-            .imageCache(DEFAULT_IMAGE_CACHE)
-            .idBranch(DEFAULT_ID_BRANCH);
+            .imageCache(DEFAULT_IMAGE_CACHE);
         return category;
     }
 
@@ -138,7 +134,6 @@ public class CategoryResourceIntTest {
         assertThat(testCategory.getImageUrl()).isEqualTo(DEFAULT_IMAGE_URL);
         assertThat(testCategory.getImageName()).isEqualTo(DEFAULT_IMAGE_NAME);
         assertThat(testCategory.getImageCache()).isEqualTo(DEFAULT_IMAGE_CACHE);
-        assertThat(testCategory.getIdBranch()).isEqualTo(DEFAULT_ID_BRANCH);
     }
 
     @Test
@@ -176,8 +171,7 @@ public class CategoryResourceIntTest {
             .andExpect(jsonPath("$.[*].description").value(hasItem(DEFAULT_DESCRIPTION.toString())))
             .andExpect(jsonPath("$.[*].imageUrl").value(hasItem(DEFAULT_IMAGE_URL.toString())))
             .andExpect(jsonPath("$.[*].imageName").value(hasItem(DEFAULT_IMAGE_NAME.toString())))
-            .andExpect(jsonPath("$.[*].imageCache").value(hasItem(DEFAULT_IMAGE_CACHE.toString())))
-            .andExpect(jsonPath("$.[*].idBranch").value(hasItem(DEFAULT_ID_BRANCH.intValue())));
+            .andExpect(jsonPath("$.[*].imageCache").value(hasItem(DEFAULT_IMAGE_CACHE.toString())));
     }
     
     @Test
@@ -196,8 +190,7 @@ public class CategoryResourceIntTest {
             .andExpect(jsonPath("$.description").value(DEFAULT_DESCRIPTION.toString()))
             .andExpect(jsonPath("$.imageUrl").value(DEFAULT_IMAGE_URL.toString()))
             .andExpect(jsonPath("$.imageName").value(DEFAULT_IMAGE_NAME.toString()))
-            .andExpect(jsonPath("$.imageCache").value(DEFAULT_IMAGE_CACHE.toString()))
-            .andExpect(jsonPath("$.idBranch").value(DEFAULT_ID_BRANCH.intValue()));
+            .andExpect(jsonPath("$.imageCache").value(DEFAULT_IMAGE_CACHE.toString()));
     }
 
     @Test
@@ -226,8 +219,7 @@ public class CategoryResourceIntTest {
             .description(UPDATED_DESCRIPTION)
             .imageUrl(UPDATED_IMAGE_URL)
             .imageName(UPDATED_IMAGE_NAME)
-            .imageCache(UPDATED_IMAGE_CACHE)
-            .idBranch(UPDATED_ID_BRANCH);
+            .imageCache(UPDATED_IMAGE_CACHE);
 
         restCategoryMockMvc.perform(put("/api/categories")
             .contentType(TestUtil.APPLICATION_JSON_UTF8)
@@ -244,7 +236,6 @@ public class CategoryResourceIntTest {
         assertThat(testCategory.getImageUrl()).isEqualTo(UPDATED_IMAGE_URL);
         assertThat(testCategory.getImageName()).isEqualTo(UPDATED_IMAGE_NAME);
         assertThat(testCategory.getImageCache()).isEqualTo(UPDATED_IMAGE_CACHE);
-        assertThat(testCategory.getIdBranch()).isEqualTo(UPDATED_ID_BRANCH);
     }
 
     @Test

@@ -125,9 +125,6 @@ public class SupplyQueryService extends QueryService<Supply> {
             if (criteria.getInventory() != null) {
                 specification = specification.and(buildSpecification(criteria.getInventory(), Supply_.inventory));
             }
-            if (criteria.getIdBranch() != null) {
-                specification = specification.and(buildRangeSpecification(criteria.getIdBranch(), Supply_.idBranch));
-            }
             if (criteria.getCategoryId() != null) {
                 specification = specification.and(buildSpecification(criteria.getCategoryId(),
                     root -> root.join(Supply_.category, JoinType.LEFT).get(Category_.id)));

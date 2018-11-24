@@ -1,45 +1,14 @@
 {
     "fluentMethods": true,
-    "relationships": [
-        {
-            "relationshipName": "supply",
-            "otherEntityName": "supply",
-            "relationshipType": "many-to-one",
-            "otherEntityField": "id"
-        }
-    ],
+    "relationships": [],
     "fields": [
         {
             "fieldName": "name",
             "fieldType": "String"
         },
         {
-            "fieldName": "company",
+            "fieldName": "description",
             "fieldType": "String"
-        },
-        {
-            "fieldName": "type",
-            "fieldType": "String"
-        },
-        {
-            "fieldName": "phone",
-            "fieldType": "String"
-        },
-        {
-            "fieldName": "detail",
-            "fieldType": "String"
-        },
-        {
-            "fieldName": "quantity",
-            "fieldType": "Integer"
-        },
-        {
-            "fieldName": "price",
-            "fieldType": "Double"
-        },
-        {
-            "fieldName": "idProvider",
-            "fieldType": "Long"
         }
     ],
     "changelogDate": "00000000006000",

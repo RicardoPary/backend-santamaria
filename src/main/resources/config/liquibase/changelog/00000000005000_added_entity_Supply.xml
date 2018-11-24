@@ -77,10 +77,6 @@
                 <constraints nullable="true" />
             </column>
 
-            <column name="id_branch" type="bigint">
-                <constraints nullable="true" />
-            </column>
-
             <column name="category_id" type="bigint">
                 <constraints nullable="true" />
             </column>

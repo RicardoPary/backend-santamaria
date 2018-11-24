@@ -3,28 +3,12 @@
     "relationships": [],
     "fields": [
         {
-            "fieldName": "name",
-            "fieldType": "String"
-        },
-        {
-            "fieldName": "amount",
-            "fieldType": "Double"
-        },
-        {
-            "fieldName": "description",
-            "fieldType": "String"
-        },
-        {
-            "fieldName": "company",
-            "fieldType": "String"
-        },
-        {
             "fieldName": "type",
             "fieldType": "String"
         },
         {
-            "fieldName": "phone",
-            "fieldType": "String"
+            "fieldName": "salary",
+            "fieldType": "Double"
         },
         {
             "fieldName": "date",

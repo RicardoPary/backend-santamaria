@@ -4,15 +4,15 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
     <!--
-        Added the constraints for entity TypeAttention.
+        Added the constraints for entity ConsultationDetails.
     -->
-    <changeSet id="00000000006000-2" author="jhipster">
+    <changeSet id="00000000000700-2" author="jhipster">
         
-        <addForeignKeyConstraint baseColumnNames="supply_id"
-                                 baseTableName="type_attention"
-                                 constraintName="fk_type_attention_supply_id"
+        <addForeignKeyConstraint baseColumnNames="consultation_id"
+                                 baseTableName="consultation_details"
+                                 constraintName="fk_consultation_details_consultation_id"
                                  referencedColumnNames="id"
-                                 referencedTableName="supply"/>
+                                 referencedTableName="consultation"/>
 
     </changeSet>
 </databaseChangeLog>

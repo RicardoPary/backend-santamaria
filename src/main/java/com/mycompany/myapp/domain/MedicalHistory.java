@@ -24,20 +24,11 @@ public class MedicalHistory implements Serializable {
     @Column(name = "name")
     private String name;
 
-    @Column(name = "amount")
-    private Double amount;
-
     @Column(name = "description")
     private String description;
 
-    @Column(name = "company")
-    private String company;
-
     @Column(name = "jhi_type")
     private String type;
-
-    @Column(name = "phone")
-    private String phone;
 
     @Column(name = "jhi_date")
     private LocalDate date;
@@ -67,19 +58,6 @@ public class MedicalHistory implements Serializable {
         this.name = name;
     }
 
-    public Double getAmount() {
-        return amount;
-    }
-
-    public MedicalHistory amount(Double amount) {
-        this.amount = amount;
-        return this;
-    }
-
-    public void setAmount(Double amount) {
-        this.amount = amount;
-    }
-
     public String getDescription() {
         return description;
     }
@@ -93,19 +71,6 @@ public class MedicalHistory implements Serializable {
         this.description = description;
     }
 
-    public String getCompany() {
-        return company;
-    }
-
-    public MedicalHistory company(String company) {
-        this.company = company;
-        return this;
-    }
-
-    public void setCompany(String company) {
-        this.company = company;
-    }
-
     public String getType() {
         return type;
     }
@@ -117,19 +82,6 @@ public class MedicalHistory implements Serializable {
 
     public void setType(String type) {
         this.type = type;
-    }
-
-    public String getPhone() {
-        return phone;
-    }
-
-    public MedicalHistory phone(String phone) {
-        this.phone = phone;
-        return this;
-    }
-
-    public void setPhone(String phone) {
-        this.phone = phone;
     }
 
     public LocalDate getDate() {
@@ -184,11 +136,8 @@ public class MedicalHistory implements Serializable {
         return "MedicalHistory{" +
             "id=" + getId() +
             ", name='" + getName() + "'" +
-            ", amount=" + getAmount() +
             ", description='" + getDescription() + "'" +
-            ", company='" + getCompany() + "'" +
             ", type='" + getType() + "'" +
-            ", phone='" + getPhone() + "'" +
             ", date='" + getDate() + "'" +
             ", idStaff=" + getIdStaff() +
             "}";
