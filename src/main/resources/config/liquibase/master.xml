@@ -5,7 +5,26 @@
     xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
 
     <include file="config/liquibase/changelog/00000000000000_initial_schema.xml" relativeToChangelogFile="false"/>
-    <include file="config/liquibase/changelog/20181123222810_added_entity_Prueba.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/00000000000100_added_entity_Access.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/00000000000200_added_entity_Category.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/00000000000300_added_entity_Contract.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/00000000000400_added_entity_Diagnosis.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/00000000000500_added_entity_Inventory.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/00000000000600_added_entity_MedicalConsultation.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/00000000000700_added_entity_MedicalConsultationDetails.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/00000000000800_added_entity_MedicalHistory.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/00000000000900_added_entity_Module.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/00000000001000_added_entity_Patient.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/00000000002000_added_entity_Provider.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/00000000003000_added_entity_Role.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/00000000004000_added_entity_Staff.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/00000000005000_added_entity_Supply.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/00000000006000_added_entity_TypeAttention.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-changelog - JHipster will add liquibase changelogs here -->
+    <include file="config/liquibase/changelog/00000000000500_added_entity_constraints_Inventory.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/00000000000600_added_entity_constraints_MedicalConsultation.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/00000000003000_added_entity_constraints_Role.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/00000000005000_added_entity_constraints_Supply.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/00000000006000_added_entity_constraints_TypeAttention.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-constraints-changelog - JHipster will add liquibase constraints changelogs here -->
 </databaseChangeLog>
