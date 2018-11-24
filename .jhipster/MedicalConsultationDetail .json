@@ -63,10 +63,10 @@
             "fieldType": "LocalDate"
         }
     ],
-    "changelogDate": "00000000005000",
+    "changelogDate": "00000000000700",
     "dto": "no",
     "service": "serviceClass",
-    "entityTableName": "purchase_detail",
+    "entityTableName": "medical_consultation_detail",
     "jpaMetamodelFiltering": false,
     "pagination": "pager"
 }

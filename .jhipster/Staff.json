@@ -35,10 +35,10 @@
             "fieldType": "String"
         }
     ],
-    "changelogDate": "00000000000500",
+    "changelogDate": "00000000004000",
     "dto": "no",
     "service": "serviceClass",
-    "entityTableName": "client",
+    "entityTableName": "staff",
     "jpaMetamodelFiltering": false,
     "pagination": "pager"
 }

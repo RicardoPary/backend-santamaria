@@ -42,10 +42,10 @@
             "fieldType": "Long"
         }
     ],
-    "changelogDate": "00000000000800",
+    "changelogDate": "00000000000600",
     "dto": "no",
     "service": "serviceClass",
-    "entityTableName": "inventory",
+    "entityTableName": "medical_consultation",
     "jpaMetamodelFiltering": false,
     "pagination": "pager"
 }

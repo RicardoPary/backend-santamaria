@@ -35,10 +35,10 @@
             "fieldType": "Long"
         }
     ],
-    "changelogDate": "00000000004000",
+    "changelogDate": "00000000000300",
     "dto": "no",
     "service": "serviceClass",
-    "entityTableName": "provider",
+    "entityTableName": "contract",
     "jpaMetamodelFiltering": false,
     "pagination": "pager"
 }

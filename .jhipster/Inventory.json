@@ -42,7 +42,7 @@
             "fieldType": "Long"
         }
     ],
-    "changelogDate": "00000000000800",
+    "changelogDate": "00000000000500",
     "dto": "no",
     "service": "serviceClass",
     "entityTableName": "inventory",

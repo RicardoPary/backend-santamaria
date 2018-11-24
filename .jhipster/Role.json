@@ -20,7 +20,7 @@
             "fieldType": "String"
         }
     ],
-    "changelogDate": "00000000006000",
+    "changelogDate": "00000000003000",
     "dto": "no",
     "service": "serviceClass",
     "entityTableName": "role",

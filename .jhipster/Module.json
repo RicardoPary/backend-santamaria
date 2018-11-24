@@ -7,7 +7,7 @@
             "fieldType": "String"
         }
     ],
-    "changelogDate": "00000000002000",
+    "changelogDate": "00000000000900",
     "dto": "no",
     "service": "serviceClass",
     "entityTableName": "module",

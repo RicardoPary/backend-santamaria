@@ -37,7 +37,7 @@
             "fieldType": "Long"
         }
     ],
-    "changelogDate": "00000000000400",
+    "changelogDate": "00000000000200",
     "dto": "no",
     "service": "serviceClass",
     "entityTableName": "category",
