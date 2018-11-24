@@ -1,0 +1,37 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipName": "role",
+            "otherEntityName": "role",
+            "relationshipType": "many-to-many",
+            "otherEntityField": "id",
+            "ownerSide": false,
+            "otherEntityRelationshipName": "access"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "name",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "url",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "icon",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "idModule",
+            "fieldType": "Long"
+        }
+    ],
+    "changelogDate": "00000000000100",
+    "dto": "no",
+    "service": "serviceClass",
+    "entityTableName": "access",
+    "jpaMetamodelFiltering": false,
+    "pagination": "no"
+}

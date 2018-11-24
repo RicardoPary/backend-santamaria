@@ -1,0 +1,92 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipName": "category",
+            "otherEntityName": "category",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "name",
+            "fieldType": "String",
+            "fieldValidateRules": []
+        },
+        {
+            "fieldName": "type",
+            "fieldType": "String",
+            "fieldValidateRules": []
+        },
+        {
+            "fieldName": "stock",
+            "fieldType": "Integer",
+            "fieldValidateRules": []
+        },
+        {
+            "fieldName": "description",
+            "fieldType": "String",
+            "fieldValidateRules": []
+        },
+        {
+            "fieldName": "salePrice",
+            "fieldType": "Double",
+            "fieldValidateRules": []
+        },
+        {
+            "fieldName": "wholesalePrice",
+            "fieldType": "Double",
+            "fieldValidateRules": []
+        },
+        {
+            "fieldName": "purchasePrice",
+            "fieldType": "Double",
+            "fieldValidateRules": []
+        },
+        {
+            "fieldName": "marke",
+            "fieldType": "String",
+            "fieldValidateRules": []
+        },
+        {
+            "fieldName": "discount",
+            "fieldType": "Double",
+            "fieldValidateRules": []
+        },
+        {
+            "fieldName": "barcode",
+            "fieldType": "String",
+            "fieldValidateRules": []
+        },
+        {
+            "fieldName": "urlImage",
+            "fieldType": "String",
+            "fieldValidateRules": []
+        },
+        {
+            "fieldName": "imageName",
+            "fieldType": "String",
+            "fieldValidateRules": []
+        },
+        {
+            "fieldName": "imageCache",
+            "fieldType": "String",
+            "fieldValidateRules": []
+        },
+        {
+            "fieldName": "inventory",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "idBranch",
+            "fieldType": "Long"
+        }
+    ],
+    "changelogDate": "00000000003000",
+    "dto": "no",
+    "service": "serviceClass",
+    "entityTableName": "product",
+    "jpaMetamodelFiltering": true,
+    "pagination": "pager"
+}

@@ -1,0 +1,5 @@
+id;name;description
+1;Administrador;Realizar todas las acciones
+2;Facturador;Emitir Facturas, Facturar por Lotes e Historial de Lotes
+3;Contable;Modulo Reportes y Ciclos
+4;Soporte;Historial de Facturas: * No Descargar * No Anular * Si Enviar correo

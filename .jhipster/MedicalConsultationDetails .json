@@ -1,0 +1,72 @@
+{
+    "fluentMethods": true,
+    "relationships": [],
+    "fields": [
+        {
+            "fieldName": "observation",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "detail",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "name",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "quantity",
+            "fieldType": "BigDecimal"
+        },
+        {
+            "fieldName": "price",
+            "fieldType": "BigDecimal"
+        },
+        {
+            "fieldName": "subtotal",
+            "fieldType": "BigDecimal"
+        },
+        {
+            "fieldName": "idProduct",
+            "fieldType": "Long"
+        },
+        {
+            "fieldName": "initialCurrentStock",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "finalCurrentStock",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "typeMethod",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "discount",
+            "fieldType": "Double"
+        },
+        {
+            "fieldName": "idInvoice",
+            "fieldType": "Long"
+        },
+        {
+            "fieldName": "idBranch",
+            "fieldType": "Long"
+        },
+        {
+            "fieldName": "idBox",
+            "fieldType": "Long"
+        },
+        {
+            "fieldName": "date",
+            "fieldType": "LocalDate"
+        }
+    ],
+    "changelogDate": "00000000005000",
+    "dto": "no",
+    "service": "serviceClass",
+    "entityTableName": "purchase_detail",
+    "jpaMetamodelFiltering": false,
+    "pagination": "pager"
+}

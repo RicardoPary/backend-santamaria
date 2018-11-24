@@ -1,0 +1,44 @@
+{
+    "fluentMethods": true,
+    "relationships": [],
+    "fields": [
+        {
+            "fieldName": "ci",
+            "fieldType": "Long"
+        },
+        {
+            "fieldName": "nombre",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "paterno",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "materno",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "nit",
+            "fieldType": "Long"
+        },
+        {
+            "fieldName": "email",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "profession",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "especiality",
+            "fieldType": "String"
+        }
+    ],
+    "changelogDate": "00000000000500",
+    "dto": "no",
+    "service": "serviceClass",
+    "entityTableName": "client",
+    "jpaMetamodelFiltering": false,
+    "pagination": "pager"
+}
