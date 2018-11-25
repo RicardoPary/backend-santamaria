@@ -72,4 +72,24 @@ public class InventoryService {
         log.debug("Request to delete Inventory : {}", id);
         inventoryRepository.deleteById(id);
     }
+
+
+    /**
+     * ======================================== Others Methods
+     */
+
+    /**
+     * By Ricardo Pari
+     * Get all inventories by id provider.
+     *
+     * @param pageable the pagination information nad idProvider
+     * @return the list of entities
+     */
+    @Transactional(readOnly = true)
+    public Page<Inventory> getAllByIdProvider(Pageable pageable, Long id) {
+        log.debug("Request to get all Inventories by id Provider");
+        return inventoryRepository.getAllByIdProvider(pageable, id);
+    }
+
+
 }
