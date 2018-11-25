@@ -36,11 +36,8 @@ public class Inventory implements Serializable {
     @Column(name = "price")
     private Double price;
 
-    @Column(name = "id_staff")
-    private Long idStaff;
-
-    @Column(name = "id_supply")
-    private Long idSupply;
+    @Column(name = "id_provider")
+    private Long idProvider;
 
     @ManyToOne
     @JsonIgnoreProperties("")
@@ -120,30 +117,17 @@ public class Inventory implements Serializable {
         this.price = price;
     }
 
-    public Long getIdStaff() {
-        return idStaff;
+    public Long getIdProvider() {
+        return idProvider;
     }
 
-    public Inventory idStaff(Long idStaff) {
-        this.idStaff = idStaff;
+    public Inventory idProvider(Long idProvider) {
+        this.idProvider = idProvider;
         return this;
     }
 
-    public void setIdStaff(Long idStaff) {
-        this.idStaff = idStaff;
-    }
-
-    public Long getIdSupply() {
-        return idSupply;
-    }
-
-    public Inventory idSupply(Long idSupply) {
-        this.idSupply = idSupply;
-        return this;
-    }
-
-    public void setIdSupply(Long idSupply) {
-        this.idSupply = idSupply;
+    public void setIdProvider(Long idProvider) {
+        this.idProvider = idProvider;
     }
 
     public Supply getSupply() {
@@ -189,8 +173,7 @@ public class Inventory implements Serializable {
             ", detail='" + getDetail() + "'" +
             ", quantity=" + getQuantity() +
             ", price=" + getPrice() +
-            ", idStaff=" + getIdStaff() +
-            ", idSupply=" + getIdSupply() +
+            ", idProvider=" + getIdProvider() +
             "}";
     }
 }

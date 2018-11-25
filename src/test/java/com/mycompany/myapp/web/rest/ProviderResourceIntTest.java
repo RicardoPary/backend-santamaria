@@ -2,6 +2,9 @@ package com.mycompany.myapp.web.rest;
 
 import com.mycompany.myapp.SantamariaApp;
 
+import com.mycompany.myapp.domain.Provider;
+import com.mycompany.myapp.repository.ProviderRepository;
+import com.mycompany.myapp.service.ProviderService;
 import com.mycompany.myapp.web.rest.errors.ExceptionTranslator;
 
 import org.junit.Before;
@@ -60,9 +63,6 @@ public class ProviderResourceIntTest {
     private static final LocalDate DEFAULT_DATE = LocalDate.ofEpochDay(0L);
     private static final LocalDate UPDATED_DATE = LocalDate.now(ZoneId.systemDefault());
 
-    private static final Long DEFAULT_ID_BRANCH = 1L;
-    private static final Long UPDATED_ID_BRANCH = 2L;
-
     @Autowired
     private ProviderRepository providerRepository;
 
@@ -110,8 +110,7 @@ public class ProviderResourceIntTest {
             .company(DEFAULT_COMPANY)
             .type(DEFAULT_TYPE)
             .phone(DEFAULT_PHONE)
-            .date(DEFAULT_DATE)
-            .idBranch(DEFAULT_ID_BRANCH);
+            .date(DEFAULT_DATE);
         return provider;
     }
 
@@ -142,7 +141,6 @@ public class ProviderResourceIntTest {
         assertThat(testProvider.getType()).isEqualTo(DEFAULT_TYPE);
         assertThat(testProvider.getPhone()).isEqualTo(DEFAULT_PHONE);
         assertThat(testProvider.getDate()).isEqualTo(DEFAULT_DATE);
-        assertThat(testProvider.getIdBranch()).isEqualTo(DEFAULT_ID_BRANCH);
     }
 
     @Test
@@ -181,8 +179,7 @@ public class ProviderResourceIntTest {
             .andExpect(jsonPath("$.[*].company").value(hasItem(DEFAULT_COMPANY.toString())))
             .andExpect(jsonPath("$.[*].type").value(hasItem(DEFAULT_TYPE.toString())))
             .andExpect(jsonPath("$.[*].phone").value(hasItem(DEFAULT_PHONE.toString())))
-            .andExpect(jsonPath("$.[*].date").value(hasItem(DEFAULT_DATE.toString())))
-            .andExpect(jsonPath("$.[*].idBranch").value(hasItem(DEFAULT_ID_BRANCH.intValue())));
+            .andExpect(jsonPath("$.[*].date").value(hasItem(DEFAULT_DATE.toString())));
     }
     
     @Test
@@ -202,8 +199,7 @@ public class ProviderResourceIntTest {
             .andExpect(jsonPath("$.company").value(DEFAULT_COMPANY.toString()))
             .andExpect(jsonPath("$.type").value(DEFAULT_TYPE.toString()))
             .andExpect(jsonPath("$.phone").value(DEFAULT_PHONE.toString()))
-            .andExpect(jsonPath("$.date").value(DEFAULT_DATE.toString()))
-            .andExpect(jsonPath("$.idBranch").value(DEFAULT_ID_BRANCH.intValue()));
+            .andExpect(jsonPath("$.date").value(DEFAULT_DATE.toString()));
     }
 
     @Test
@@ -233,8 +229,7 @@ public class ProviderResourceIntTest {
             .company(UPDATED_COMPANY)
             .type(UPDATED_TYPE)
             .phone(UPDATED_PHONE)
-            .date(UPDATED_DATE)
-            .idBranch(UPDATED_ID_BRANCH);
+            .date(UPDATED_DATE);
 
         restProviderMockMvc.perform(put("/api/providers")
             .contentType(TestUtil.APPLICATION_JSON_UTF8)
@@ -252,7 +247,6 @@ public class ProviderResourceIntTest {
         assertThat(testProvider.getType()).isEqualTo(UPDATED_TYPE);
         assertThat(testProvider.getPhone()).isEqualTo(UPDATED_PHONE);
         assertThat(testProvider.getDate()).isEqualTo(UPDATED_DATE);
-        assertThat(testProvider.getIdBranch()).isEqualTo(UPDATED_ID_BRANCH);
     }
 
     @Test

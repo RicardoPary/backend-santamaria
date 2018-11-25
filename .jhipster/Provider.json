@@ -2,8 +2,8 @@
     "fluentMethods": true,
     "relationships": [
         {
-            "relationshipName": "supply",
-            "otherEntityName": "supply",
+            "relationshipName": "staff",
+            "otherEntityName": "staff",
             "relationshipType": "many-to-one",
             "otherEntityField": "id"
         }
@@ -14,30 +14,34 @@
             "fieldType": "String"
         },
         {
+            "fieldName": "observation",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "description",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "company",
+            "fieldType": "String"
+        },
+        {
             "fieldName": "type",
             "fieldType": "String"
         },
         {
-            "fieldName": "detail",
+            "fieldName": "phone",
             "fieldType": "String"
         },
         {
-            "fieldName": "quantity",
-            "fieldType": "Integer"
-        },
-        {
-            "fieldName": "price",
-            "fieldType": "Double"
-        },
-        {
-            "fieldName": "idProvider",
-            "fieldType": "Long"
+            "fieldName": "date",
+            "fieldType": "LocalDate"
         }
     ],
-    "changelogDate": "00000000000500",
+    "changelogDate": "00000000007000",
     "dto": "no",
     "service": "serviceClass",
-    "entityTableName": "inventory",
+    "entityTableName": "provider",
     "jpaMetamodelFiltering": false,
     "pagination": "pager"
 }
