@@ -22,68 +22,74 @@
                 <constraints primaryKey="true" nullable="false"/>
             </column>
             <column name="name" type="varchar(255)">
-                <constraints nullable="true" />
+                <constraints nullable="true"/>
             </column>
 
             <column name="jhi_type" type="varchar(255)">
-                <constraints nullable="true" />
+                <constraints nullable="true"/>
             </column>
 
             <column name="stock" type="integer">
-                <constraints nullable="true" />
+                <constraints nullable="true"/>
             </column>
 
             <column name="description" type="varchar(255)">
-                <constraints nullable="true" />
+                <constraints nullable="true"/>
             </column>
 
             <column name="sale_price" type="double">
-                <constraints nullable="true" />
+                <constraints nullable="true"/>
             </column>
 
             <column name="wholesale_price" type="double">
-                <constraints nullable="true" />
+                <constraints nullable="true"/>
             </column>
 
             <column name="purchase_price" type="double">
-                <constraints nullable="true" />
+                <constraints nullable="true"/>
             </column>
 
             <column name="marke" type="varchar(255)">
-                <constraints nullable="true" />
+                <constraints nullable="true"/>
             </column>
 
             <column name="discount" type="double">
-                <constraints nullable="true" />
+                <constraints nullable="true"/>
             </column>
 
             <column name="barcode" type="varchar(255)">
-                <constraints nullable="true" />
+                <constraints nullable="true"/>
             </column>
 
             <column name="url_image" type="varchar(255)">
-                <constraints nullable="true" />
+                <constraints nullable="true"/>
             </column>
 
             <column name="image_name" type="varchar(255)">
-                <constraints nullable="true" />
+                <constraints nullable="true"/>
             </column>
 
             <column name="image_cache" type="varchar(255)">
-                <constraints nullable="true" />
+                <constraints nullable="true"/>
             </column>
 
             <column name="inventory" type="boolean">
-                <constraints nullable="true" />
+                <constraints nullable="true"/>
             </column>
 
             <column name="category_id" type="bigint">
-                <constraints nullable="true" />
+                <constraints nullable="true"/>
             </column>
 
             <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here, do not remove-->
         </createTable>
-        
+
+        <loadData encoding="UTF-8"
+                  file="config/liquibase/supply.csv"
+                  separator=";"
+                  tableName="supply">
+        </loadData>
+
     </changeSet>
     <!-- jhipster-needle-liquibase-add-changeset - JHipster will add changesets here, do not remove-->
 </databaseChangeLog>
