@@ -25,27 +25,23 @@
                 <constraints nullable="true" />
             </column>
 
-            <column name="nombre" type="varchar(255)">
+            <column name="first_name" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
 
-            <column name="paterno" type="varchar(255)">
+            <column name="last_name" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
 
-            <column name="materno" type="varchar(255)">
+            <column name="gender" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
 
-            <column name="email" type="varchar(255)">
+            <column name="birthdate" type="date">
                 <constraints nullable="true" />
             </column>
 
-            <column name="profession" type="varchar(255)">
-                <constraints nullable="true" />
-            </column>
-
-            <column name="especiality" type="varchar(255)">
+            <column name="nationality" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
 
@@ -53,9 +49,23 @@
                 <constraints nullable="true" />
             </column>
 
+            <column name="phone" type="bigint">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="email" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+
             <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here, do not remove-->
         </createTable>
-        
+
+        <loadData encoding="UTF-8"
+                  file="config/liquibase/patient.csv"
+                  separator=";"
+                  tableName="patient">
+        </loadData>
+
     </changeSet>
     <!-- jhipster-needle-liquibase-add-changeset - JHipster will add changesets here, do not remove-->
 </databaseChangeLog>

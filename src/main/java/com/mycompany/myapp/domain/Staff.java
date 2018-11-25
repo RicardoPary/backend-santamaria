@@ -4,6 +4,7 @@ package com.mycompany.myapp.domain;
 import javax.persistence.*;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.util.Objects;
 
 /**
@@ -23,14 +24,26 @@ public class Staff implements Serializable {
     @Column(name = "ci")
     private Long ci;
 
-    @Column(name = "nombre")
-    private String nombre;
+    @Column(name = "first_name")
+    private String firstName;
 
-    @Column(name = "paterno")
-    private String paterno;
+    @Column(name = "last_name")
+    private String lastName;
 
-    @Column(name = "materno")
-    private String materno;
+    @Column(name = "gender")
+    private String gender;
+
+    @Column(name = "birthdate")
+    private LocalDate birthdate;
+
+    @Column(name = "nationality")
+    private String nationality;
+
+    @Column(name = "address")
+    private String address;
+
+    @Column(name = "phone")
+    private Long phone;
 
     @Column(name = "email")
     private String email;
@@ -38,11 +51,8 @@ public class Staff implements Serializable {
     @Column(name = "profession")
     private String profession;
 
-    @Column(name = "especiality")
-    private String especiality;
-
-    @Column(name = "address")
-    private String address;
+    @Column(name = "speciality")
+    private String speciality;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
@@ -66,43 +76,95 @@ public class Staff implements Serializable {
         this.ci = ci;
     }
 
-    public String getNombre() {
-        return nombre;
+    public String getFirstName() {
+        return firstName;
     }
 
-    public Staff nombre(String nombre) {
-        this.nombre = nombre;
+    public Staff firstName(String firstName) {
+        this.firstName = firstName;
         return this;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
     }
 
-    public String getPaterno() {
-        return paterno;
+    public String getLastName() {
+        return lastName;
     }
 
-    public Staff paterno(String paterno) {
-        this.paterno = paterno;
+    public Staff lastName(String lastName) {
+        this.lastName = lastName;
         return this;
     }
 
-    public void setPaterno(String paterno) {
-        this.paterno = paterno;
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
-    public String getMaterno() {
-        return materno;
+    public String getGender() {
+        return gender;
     }
 
-    public Staff materno(String materno) {
-        this.materno = materno;
+    public Staff gender(String gender) {
+        this.gender = gender;
         return this;
     }
 
-    public void setMaterno(String materno) {
-        this.materno = materno;
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
+
+    public LocalDate getBirthdate() {
+        return birthdate;
+    }
+
+    public Staff birthdate(LocalDate birthdate) {
+        this.birthdate = birthdate;
+        return this;
+    }
+
+    public void setBirthdate(LocalDate birthdate) {
+        this.birthdate = birthdate;
+    }
+
+    public String getNationality() {
+        return nationality;
+    }
+
+    public Staff nationality(String nationality) {
+        this.nationality = nationality;
+        return this;
+    }
+
+    public void setNationality(String nationality) {
+        this.nationality = nationality;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public Staff address(String address) {
+        this.address = address;
+        return this;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public Long getPhone() {
+        return phone;
+    }
+
+    public Staff phone(Long phone) {
+        this.phone = phone;
+        return this;
+    }
+
+    public void setPhone(Long phone) {
+        this.phone = phone;
     }
 
     public String getEmail() {
@@ -131,30 +193,17 @@ public class Staff implements Serializable {
         this.profession = profession;
     }
 
-    public String getEspeciality() {
-        return especiality;
+    public String getSpeciality() {
+        return speciality;
     }
 
-    public Staff especiality(String especiality) {
-        this.especiality = especiality;
+    public Staff speciality(String speciality) {
+        this.speciality = speciality;
         return this;
     }
 
-    public void setEspeciality(String especiality) {
-        this.especiality = especiality;
-    }
-
-    public String getAddress() {
-        return address;
-    }
-
-    public Staff address(String address) {
-        this.address = address;
-        return this;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
+    public void setSpeciality(String speciality) {
+        this.speciality = speciality;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 
@@ -183,13 +232,16 @@ public class Staff implements Serializable {
         return "Staff{" +
             "id=" + getId() +
             ", ci=" + getCi() +
-            ", nombre='" + getNombre() + "'" +
-            ", paterno='" + getPaterno() + "'" +
-            ", materno='" + getMaterno() + "'" +
+            ", firstName='" + getFirstName() + "'" +
+            ", lastName='" + getLastName() + "'" +
+            ", gender='" + getGender() + "'" +
+            ", birthdate='" + getBirthdate() + "'" +
+            ", nationality='" + getNationality() + "'" +
+            ", address='" + getAddress() + "'" +
+            ", phone=" + getPhone() +
             ", email='" + getEmail() + "'" +
             ", profession='" + getProfession() + "'" +
-            ", especiality='" + getEspeciality() + "'" +
-            ", address='" + getAddress() + "'" +
+            ", speciality='" + getSpeciality() + "'" +
             "}";
     }
 }

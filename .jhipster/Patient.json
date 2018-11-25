@@ -1,37 +1,42 @@
 {
     "fluentMethods": true,
     "relationships": [],
+
     "fields": [
         {
             "fieldName": "ci",
             "fieldType": "Long"
         },
         {
-            "fieldName": "nombre",
+            "fieldName": "firstName",
             "fieldType": "String"
         },
         {
-            "fieldName": "paterno",
+            "fieldName": "lastName",
             "fieldType": "String"
         },
         {
-            "fieldName": "materno",
+            "fieldName": "gender",
             "fieldType": "String"
         },
         {
-            "fieldName": "email",
-            "fieldType": "String"
+            "fieldName": "birthdate",
+            "fieldType": "LocalDate"
         },
         {
-            "fieldName": "profession",
-            "fieldType": "String"
-        },
-        {
-            "fieldName": "especiality",
+            "fieldName": "nationality",
             "fieldType": "String"
         },
         {
             "fieldName": "address",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "phone",
+            "fieldType": "Long"
+        },
+        {
+            "fieldName": "email",
             "fieldType": "String"
         }
     ],

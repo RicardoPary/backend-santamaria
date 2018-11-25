@@ -4,6 +4,7 @@ package com.mycompany.myapp.domain;
 import javax.persistence.*;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.util.Objects;
 
 /**
@@ -23,26 +24,29 @@ public class Patient implements Serializable {
     @Column(name = "ci")
     private Long ci;
 
-    @Column(name = "nombre")
-    private String nombre;
+    @Column(name = "first_name")
+    private String firstName;
 
-    @Column(name = "paterno")
-    private String paterno;
+    @Column(name = "last_name")
+    private String lastName;
 
-    @Column(name = "materno")
-    private String materno;
+    @Column(name = "gender")
+    private String gender;
 
-    @Column(name = "email")
-    private String email;
+    @Column(name = "birthdate")
+    private LocalDate birthdate;
 
-    @Column(name = "profession")
-    private String profession;
-
-    @Column(name = "especiality")
-    private String especiality;
+    @Column(name = "nationality")
+    private String nationality;
 
     @Column(name = "address")
     private String address;
+
+    @Column(name = "phone")
+    private Long phone;
+
+    @Column(name = "email")
+    private String email;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
@@ -66,82 +70,69 @@ public class Patient implements Serializable {
         this.ci = ci;
     }
 
-    public String getNombre() {
-        return nombre;
+    public String getFirstName() {
+        return firstName;
     }
 
-    public Patient nombre(String nombre) {
-        this.nombre = nombre;
+    public Patient firstName(String firstName) {
+        this.firstName = firstName;
         return this;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
     }
 
-    public String getPaterno() {
-        return paterno;
+    public String getLastName() {
+        return lastName;
     }
 
-    public Patient paterno(String paterno) {
-        this.paterno = paterno;
+    public Patient lastName(String lastName) {
+        this.lastName = lastName;
         return this;
     }
 
-    public void setPaterno(String paterno) {
-        this.paterno = paterno;
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
-    public String getMaterno() {
-        return materno;
+    public String getGender() {
+        return gender;
     }
 
-    public Patient materno(String materno) {
-        this.materno = materno;
+    public Patient gender(String gender) {
+        this.gender = gender;
         return this;
     }
 
-    public void setMaterno(String materno) {
-        this.materno = materno;
+    public void setGender(String gender) {
+        this.gender = gender;
     }
 
-    public String getEmail() {
-        return email;
+    public LocalDate getBirthdate() {
+        return birthdate;
     }
 
-    public Patient email(String email) {
-        this.email = email;
+    public Patient birthdate(LocalDate birthdate) {
+        this.birthdate = birthdate;
         return this;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setBirthdate(LocalDate birthdate) {
+        this.birthdate = birthdate;
     }
 
-    public String getProfession() {
-        return profession;
+    public String getNationality() {
+        return nationality;
     }
 
-    public Patient profession(String profession) {
-        this.profession = profession;
+    public Patient nationality(String nationality) {
+        this.nationality = nationality;
         return this;
     }
 
-    public void setProfession(String profession) {
-        this.profession = profession;
-    }
-
-    public String getEspeciality() {
-        return especiality;
-    }
-
-    public Patient especiality(String especiality) {
-        this.especiality = especiality;
-        return this;
-    }
-
-    public void setEspeciality(String especiality) {
-        this.especiality = especiality;
+    public void setNationality(String nationality) {
+        this.nationality = nationality;
     }
 
     public String getAddress() {
@@ -155,6 +146,32 @@ public class Patient implements Serializable {
 
     public void setAddress(String address) {
         this.address = address;
+    }
+
+    public Long getPhone() {
+        return phone;
+    }
+
+    public Patient phone(Long phone) {
+        this.phone = phone;
+        return this;
+    }
+
+    public void setPhone(Long phone) {
+        this.phone = phone;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public Patient email(String email) {
+        this.email = email;
+        return this;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 
@@ -183,13 +200,14 @@ public class Patient implements Serializable {
         return "Patient{" +
             "id=" + getId() +
             ", ci=" + getCi() +
-            ", nombre='" + getNombre() + "'" +
-            ", paterno='" + getPaterno() + "'" +
-            ", materno='" + getMaterno() + "'" +
-            ", email='" + getEmail() + "'" +
-            ", profession='" + getProfession() + "'" +
-            ", especiality='" + getEspeciality() + "'" +
+            ", firstName='" + getFirstName() + "'" +
+            ", lastName='" + getLastName() + "'" +
+            ", gender='" + getGender() + "'" +
+            ", birthdate='" + getBirthdate() + "'" +
+            ", nationality='" + getNationality() + "'" +
             ", address='" + getAddress() + "'" +
+            ", phone=" + getPhone() +
+            ", email='" + getEmail() + "'" +
             "}";
     }
 }

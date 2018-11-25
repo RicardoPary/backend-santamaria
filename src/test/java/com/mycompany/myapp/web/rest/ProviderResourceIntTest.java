@@ -2,9 +2,6 @@ package com.mycompany.myapp.web.rest;
 
 import com.mycompany.myapp.SantamariaApp;
 
-import com.mycompany.myapp.domain.Provider;
-import com.mycompany.myapp.repository.ProviderRepository;
-import com.mycompany.myapp.service.ProviderService;
 import com.mycompany.myapp.web.rest.errors.ExceptionTranslator;
 
 import org.junit.Before;

@@ -22,6 +22,8 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
+import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.List;
 
 
@@ -43,14 +45,26 @@ public class StaffResourceIntTest {
     private static final Long DEFAULT_CI = 1L;
     private static final Long UPDATED_CI = 2L;
 
-    private static final String DEFAULT_NOMBRE = "AAAAAAAAAA";
-    private static final String UPDATED_NOMBRE = "BBBBBBBBBB";
+    private static final String DEFAULT_FIRST_NAME = "AAAAAAAAAA";
+    private static final String UPDATED_FIRST_NAME = "BBBBBBBBBB";
 
-    private static final String DEFAULT_PATERNO = "AAAAAAAAAA";
-    private static final String UPDATED_PATERNO = "BBBBBBBBBB";
+    private static final String DEFAULT_LAST_NAME = "AAAAAAAAAA";
+    private static final String UPDATED_LAST_NAME = "BBBBBBBBBB";
 
-    private static final String DEFAULT_MATERNO = "AAAAAAAAAA";
-    private static final String UPDATED_MATERNO = "BBBBBBBBBB";
+    private static final String DEFAULT_GENDER = "AAAAAAAAAA";
+    private static final String UPDATED_GENDER = "BBBBBBBBBB";
+
+    private static final LocalDate DEFAULT_BIRTHDATE = LocalDate.ofEpochDay(0L);
+    private static final LocalDate UPDATED_BIRTHDATE = LocalDate.now(ZoneId.systemDefault());
+
+    private static final String DEFAULT_NATIONALITY = "AAAAAAAAAA";
+    private static final String UPDATED_NATIONALITY = "BBBBBBBBBB";
+
+    private static final String DEFAULT_ADDRESS = "AAAAAAAAAA";
+    private static final String UPDATED_ADDRESS = "BBBBBBBBBB";
+
+    private static final Long DEFAULT_PHONE = 1L;
+    private static final Long UPDATED_PHONE = 2L;
 
     private static final String DEFAULT_EMAIL = "AAAAAAAAAA";
     private static final String UPDATED_EMAIL = "BBBBBBBBBB";
@@ -58,11 +72,8 @@ public class StaffResourceIntTest {
     private static final String DEFAULT_PROFESSION = "AAAAAAAAAA";
     private static final String UPDATED_PROFESSION = "BBBBBBBBBB";
 
-    private static final String DEFAULT_ESPECIALITY = "AAAAAAAAAA";
-    private static final String UPDATED_ESPECIALITY = "BBBBBBBBBB";
-
-    private static final String DEFAULT_ADDRESS = "AAAAAAAAAA";
-    private static final String UPDATED_ADDRESS = "BBBBBBBBBB";
+    private static final String DEFAULT_SPECIALITY = "AAAAAAAAAA";
+    private static final String UPDATED_SPECIALITY = "BBBBBBBBBB";
 
     @Autowired
     private StaffRepository staffRepository;
@@ -106,13 +117,16 @@ public class StaffResourceIntTest {
     public static Staff createEntity(EntityManager em) {
         Staff staff = new Staff()
             .ci(DEFAULT_CI)
-            .nombre(DEFAULT_NOMBRE)
-            .paterno(DEFAULT_PATERNO)
-            .materno(DEFAULT_MATERNO)
+            .firstName(DEFAULT_FIRST_NAME)
+            .lastName(DEFAULT_LAST_NAME)
+            .gender(DEFAULT_GENDER)
+            .birthdate(DEFAULT_BIRTHDATE)
+            .nationality(DEFAULT_NATIONALITY)
+            .address(DEFAULT_ADDRESS)
+            .phone(DEFAULT_PHONE)
             .email(DEFAULT_EMAIL)
             .profession(DEFAULT_PROFESSION)
-            .especiality(DEFAULT_ESPECIALITY)
-            .address(DEFAULT_ADDRESS);
+            .speciality(DEFAULT_SPECIALITY);
         return staff;
     }
 
@@ -137,13 +151,16 @@ public class StaffResourceIntTest {
         assertThat(staffList).hasSize(databaseSizeBeforeCreate + 1);
         Staff testStaff = staffList.get(staffList.size() - 1);
         assertThat(testStaff.getCi()).isEqualTo(DEFAULT_CI);
-        assertThat(testStaff.getNombre()).isEqualTo(DEFAULT_NOMBRE);
-        assertThat(testStaff.getPaterno()).isEqualTo(DEFAULT_PATERNO);
-        assertThat(testStaff.getMaterno()).isEqualTo(DEFAULT_MATERNO);
+        assertThat(testStaff.getFirstName()).isEqualTo(DEFAULT_FIRST_NAME);
+        assertThat(testStaff.getLastName()).isEqualTo(DEFAULT_LAST_NAME);
+        assertThat(testStaff.getGender()).isEqualTo(DEFAULT_GENDER);
+        assertThat(testStaff.getBirthdate()).isEqualTo(DEFAULT_BIRTHDATE);
+        assertThat(testStaff.getNationality()).isEqualTo(DEFAULT_NATIONALITY);
+        assertThat(testStaff.getAddress()).isEqualTo(DEFAULT_ADDRESS);
+        assertThat(testStaff.getPhone()).isEqualTo(DEFAULT_PHONE);
         assertThat(testStaff.getEmail()).isEqualTo(DEFAULT_EMAIL);
         assertThat(testStaff.getProfession()).isEqualTo(DEFAULT_PROFESSION);
-        assertThat(testStaff.getEspeciality()).isEqualTo(DEFAULT_ESPECIALITY);
-        assertThat(testStaff.getAddress()).isEqualTo(DEFAULT_ADDRESS);
+        assertThat(testStaff.getSpeciality()).isEqualTo(DEFAULT_SPECIALITY);
     }
 
     @Test
@@ -177,13 +194,16 @@ public class StaffResourceIntTest {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(staff.getId().intValue())))
             .andExpect(jsonPath("$.[*].ci").value(hasItem(DEFAULT_CI.intValue())))
-            .andExpect(jsonPath("$.[*].nombre").value(hasItem(DEFAULT_NOMBRE.toString())))
-            .andExpect(jsonPath("$.[*].paterno").value(hasItem(DEFAULT_PATERNO.toString())))
-            .andExpect(jsonPath("$.[*].materno").value(hasItem(DEFAULT_MATERNO.toString())))
+            .andExpect(jsonPath("$.[*].firstName").value(hasItem(DEFAULT_FIRST_NAME.toString())))
+            .andExpect(jsonPath("$.[*].lastName").value(hasItem(DEFAULT_LAST_NAME.toString())))
+            .andExpect(jsonPath("$.[*].gender").value(hasItem(DEFAULT_GENDER.toString())))
+            .andExpect(jsonPath("$.[*].birthdate").value(hasItem(DEFAULT_BIRTHDATE.toString())))
+            .andExpect(jsonPath("$.[*].nationality").value(hasItem(DEFAULT_NATIONALITY.toString())))
+            .andExpect(jsonPath("$.[*].address").value(hasItem(DEFAULT_ADDRESS.toString())))
+            .andExpect(jsonPath("$.[*].phone").value(hasItem(DEFAULT_PHONE.intValue())))
             .andExpect(jsonPath("$.[*].email").value(hasItem(DEFAULT_EMAIL.toString())))
             .andExpect(jsonPath("$.[*].profession").value(hasItem(DEFAULT_PROFESSION.toString())))
-            .andExpect(jsonPath("$.[*].especiality").value(hasItem(DEFAULT_ESPECIALITY.toString())))
-            .andExpect(jsonPath("$.[*].address").value(hasItem(DEFAULT_ADDRESS.toString())));
+            .andExpect(jsonPath("$.[*].speciality").value(hasItem(DEFAULT_SPECIALITY.toString())));
     }
     
     @Test
@@ -198,13 +218,16 @@ public class StaffResourceIntTest {
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.id").value(staff.getId().intValue()))
             .andExpect(jsonPath("$.ci").value(DEFAULT_CI.intValue()))
-            .andExpect(jsonPath("$.nombre").value(DEFAULT_NOMBRE.toString()))
-            .andExpect(jsonPath("$.paterno").value(DEFAULT_PATERNO.toString()))
-            .andExpect(jsonPath("$.materno").value(DEFAULT_MATERNO.toString()))
+            .andExpect(jsonPath("$.firstName").value(DEFAULT_FIRST_NAME.toString()))
+            .andExpect(jsonPath("$.lastName").value(DEFAULT_LAST_NAME.toString()))
+            .andExpect(jsonPath("$.gender").value(DEFAULT_GENDER.toString()))
+            .andExpect(jsonPath("$.birthdate").value(DEFAULT_BIRTHDATE.toString()))
+            .andExpect(jsonPath("$.nationality").value(DEFAULT_NATIONALITY.toString()))
+            .andExpect(jsonPath("$.address").value(DEFAULT_ADDRESS.toString()))
+            .andExpect(jsonPath("$.phone").value(DEFAULT_PHONE.intValue()))
             .andExpect(jsonPath("$.email").value(DEFAULT_EMAIL.toString()))
             .andExpect(jsonPath("$.profession").value(DEFAULT_PROFESSION.toString()))
-            .andExpect(jsonPath("$.especiality").value(DEFAULT_ESPECIALITY.toString()))
-            .andExpect(jsonPath("$.address").value(DEFAULT_ADDRESS.toString()));
+            .andExpect(jsonPath("$.speciality").value(DEFAULT_SPECIALITY.toString()));
     }
 
     @Test
@@ -229,13 +252,16 @@ public class StaffResourceIntTest {
         em.detach(updatedStaff);
         updatedStaff
             .ci(UPDATED_CI)
-            .nombre(UPDATED_NOMBRE)
-            .paterno(UPDATED_PATERNO)
-            .materno(UPDATED_MATERNO)
+            .firstName(UPDATED_FIRST_NAME)
+            .lastName(UPDATED_LAST_NAME)
+            .gender(UPDATED_GENDER)
+            .birthdate(UPDATED_BIRTHDATE)
+            .nationality(UPDATED_NATIONALITY)
+            .address(UPDATED_ADDRESS)
+            .phone(UPDATED_PHONE)
             .email(UPDATED_EMAIL)
             .profession(UPDATED_PROFESSION)
-            .especiality(UPDATED_ESPECIALITY)
-            .address(UPDATED_ADDRESS);
+            .speciality(UPDATED_SPECIALITY);
 
         restStaffMockMvc.perform(put("/api/staff")
             .contentType(TestUtil.APPLICATION_JSON_UTF8)
@@ -247,13 +273,16 @@ public class StaffResourceIntTest {
         assertThat(staffList).hasSize(databaseSizeBeforeUpdate);
         Staff testStaff = staffList.get(staffList.size() - 1);
         assertThat(testStaff.getCi()).isEqualTo(UPDATED_CI);
-        assertThat(testStaff.getNombre()).isEqualTo(UPDATED_NOMBRE);
-        assertThat(testStaff.getPaterno()).isEqualTo(UPDATED_PATERNO);
-        assertThat(testStaff.getMaterno()).isEqualTo(UPDATED_MATERNO);
+        assertThat(testStaff.getFirstName()).isEqualTo(UPDATED_FIRST_NAME);
+        assertThat(testStaff.getLastName()).isEqualTo(UPDATED_LAST_NAME);
+        assertThat(testStaff.getGender()).isEqualTo(UPDATED_GENDER);
+        assertThat(testStaff.getBirthdate()).isEqualTo(UPDATED_BIRTHDATE);
+        assertThat(testStaff.getNationality()).isEqualTo(UPDATED_NATIONALITY);
+        assertThat(testStaff.getAddress()).isEqualTo(UPDATED_ADDRESS);
+        assertThat(testStaff.getPhone()).isEqualTo(UPDATED_PHONE);
         assertThat(testStaff.getEmail()).isEqualTo(UPDATED_EMAIL);
         assertThat(testStaff.getProfession()).isEqualTo(UPDATED_PROFESSION);
-        assertThat(testStaff.getEspeciality()).isEqualTo(UPDATED_ESPECIALITY);
-        assertThat(testStaff.getAddress()).isEqualTo(UPDATED_ADDRESS);
+        assertThat(testStaff.getSpeciality()).isEqualTo(UPDATED_SPECIALITY);
     }
 
     @Test

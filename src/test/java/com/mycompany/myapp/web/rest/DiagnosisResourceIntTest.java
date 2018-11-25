@@ -2,9 +2,6 @@ package com.mycompany.myapp.web.rest;
 
 import com.mycompany.myapp.SantamariaApp;
 
-import com.mycompany.myapp.domain.Diagnosis;
-import com.mycompany.myapp.repository.DiagnosisRepository;
-import com.mycompany.myapp.service.DiagnosisService;
 import com.mycompany.myapp.web.rest.errors.ExceptionTranslator;
 
 import org.junit.Before;
