@@ -123,4 +123,25 @@ public class ConsultationDetailsResource {
         consultationDetailsService.delete(id);
         return ResponseEntity.ok().headers(HeaderUtil.createEntityDeletionAlert(ENTITY_NAME, id.toString())).build();
     }
+
+
+
+
+
+
+    /**
+     * By Ricardo Pari
+     * GET  /inventories/{id}/provider : get all the inventories.
+     *
+     * @param pageable the pagination information
+     * @return the ResponseEntity with status 200 (OK) and the list of inventories in body
+     */
+    @GetMapping("/consultation-details/{id}/consultation")
+    @Timed
+    public ResponseEntity<List<ConsultationDetails>> getAllByIdConsultation(Pageable pageable, @PathVariable Long id) {
+        log.debug("REST request to get a page of Inventories by id Provider");
+        Page<ConsultationDetails> page = consultationDetailsService.getAllByIdConsultation(pageable, id);
+        HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/consultation");
+        return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
+    }
 }

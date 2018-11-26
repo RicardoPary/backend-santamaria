@@ -8,11 +8,23 @@
     -->
     <changeSet id="00000000000600-2" author="jhipster">
         
-        <addForeignKeyConstraint baseColumnNames="supply_id"
+        <addForeignKeyConstraint baseColumnNames="patient_id"
                                  baseTableName="consultation"
-                                 constraintName="fk_consultation_supply_id"
+                                 constraintName="fk_consultation_patient_id"
                                  referencedColumnNames="id"
-                                 referencedTableName="supply"/>
+                                 referencedTableName="patient"/>
+
+        <addForeignKeyConstraint baseColumnNames="staff_id"
+                                 baseTableName="consultation"
+                                 constraintName="fk_consultation_staff_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="staff"/>
+
+        <addForeignKeyConstraint baseColumnNames="type_attention_id"
+                                 baseTableName="consultation"
+                                 constraintName="fk_consultation_type_attention_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="type_attention"/>
 
     </changeSet>
 </databaseChangeLog>

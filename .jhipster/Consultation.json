@@ -2,8 +2,20 @@
     "fluentMethods": true,
     "relationships": [
         {
-            "relationshipName": "supply",
-            "otherEntityName": "supply",
+            "relationshipName": "patient",
+            "otherEntityName": "patient",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipName": "staff",
+            "otherEntityName": "staff",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipName": "typeAttention",
+            "otherEntityName": "typeAttention",
             "relationshipType": "many-to-one",
             "otherEntityField": "id"
         }
@@ -16,18 +28,6 @@
         {
             "fieldName": "detail",
             "fieldType": "String"
-        },
-        {
-            "fieldName": "idPatient",
-            "fieldType": "Long"
-        },
-        {
-            "fieldName": "idStaff",
-            "fieldType": "Long"
-        },
-        {
-            "fieldName": "idTypeAttention",
-            "fieldType": "Long"
         },
         {
             "fieldName": "date",

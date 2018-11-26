@@ -72,4 +72,26 @@ public class ConsultationDetailsService {
         log.debug("Request to delete ConsultationDetails : {}", id);
         consultationDetailsRepository.deleteById(id);
     }
+
+
+
+
+
+
+    /**
+     * ======================================== Others Methods
+     */
+
+    /**
+     * By Ricardo Pari
+     * Get all inventories by id provider.
+     *
+     * @param pageable the pagination information nad idProvider
+     * @return the list of entities
+     */
+    @Transactional(readOnly = true)
+    public Page<ConsultationDetails> getAllByIdConsultation(Pageable pageable, Long id) {
+        log.debug("Request to get all Inventories by id Provider");
+        return consultationDetailsRepository.getAllByIdConsultation(pageable, id);
+    }
 }

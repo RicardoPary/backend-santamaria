@@ -48,15 +48,6 @@ public class ConsultationResourceIntTest {
     private static final String DEFAULT_DETAIL = "AAAAAAAAAA";
     private static final String UPDATED_DETAIL = "BBBBBBBBBB";
 
-    private static final Long DEFAULT_ID_PATIENT = 1L;
-    private static final Long UPDATED_ID_PATIENT = 2L;
-
-    private static final Long DEFAULT_ID_STAFF = 1L;
-    private static final Long UPDATED_ID_STAFF = 2L;
-
-    private static final Long DEFAULT_ID_TYPE_ATTENTION = 1L;
-    private static final Long UPDATED_ID_TYPE_ATTENTION = 2L;
-
     private static final LocalDate DEFAULT_DATE = LocalDate.ofEpochDay(0L);
     private static final LocalDate UPDATED_DATE = LocalDate.now(ZoneId.systemDefault());
 
@@ -103,9 +94,6 @@ public class ConsultationResourceIntTest {
         Consultation consultation = new Consultation()
             .Diagnosis(DEFAULT_DIAGNOSIS)
             .detail(DEFAULT_DETAIL)
-            .idPatient(DEFAULT_ID_PATIENT)
-            .idStaff(DEFAULT_ID_STAFF)
-            .idTypeAttention(DEFAULT_ID_TYPE_ATTENTION)
             .date(DEFAULT_DATE);
         return consultation;
     }
@@ -132,9 +120,6 @@ public class ConsultationResourceIntTest {
         Consultation testConsultation = consultationList.get(consultationList.size() - 1);
         assertThat(testConsultation.getDiagnosis()).isEqualTo(DEFAULT_DIAGNOSIS);
         assertThat(testConsultation.getDetail()).isEqualTo(DEFAULT_DETAIL);
-        assertThat(testConsultation.getIdPatient()).isEqualTo(DEFAULT_ID_PATIENT);
-        assertThat(testConsultation.getIdStaff()).isEqualTo(DEFAULT_ID_STAFF);
-        assertThat(testConsultation.getIdTypeAttention()).isEqualTo(DEFAULT_ID_TYPE_ATTENTION);
         assertThat(testConsultation.getDate()).isEqualTo(DEFAULT_DATE);
     }
 
@@ -170,9 +155,6 @@ public class ConsultationResourceIntTest {
             .andExpect(jsonPath("$.[*].id").value(hasItem(consultation.getId().intValue())))
             .andExpect(jsonPath("$.[*].Diagnosis").value(hasItem(DEFAULT_DIAGNOSIS.toString())))
             .andExpect(jsonPath("$.[*].detail").value(hasItem(DEFAULT_DETAIL.toString())))
-            .andExpect(jsonPath("$.[*].idPatient").value(hasItem(DEFAULT_ID_PATIENT.intValue())))
-            .andExpect(jsonPath("$.[*].idStaff").value(hasItem(DEFAULT_ID_STAFF.intValue())))
-            .andExpect(jsonPath("$.[*].idTypeAttention").value(hasItem(DEFAULT_ID_TYPE_ATTENTION.intValue())))
             .andExpect(jsonPath("$.[*].date").value(hasItem(DEFAULT_DATE.toString())));
     }
     
@@ -189,9 +171,6 @@ public class ConsultationResourceIntTest {
             .andExpect(jsonPath("$.id").value(consultation.getId().intValue()))
             .andExpect(jsonPath("$.Diagnosis").value(DEFAULT_DIAGNOSIS.toString()))
             .andExpect(jsonPath("$.detail").value(DEFAULT_DETAIL.toString()))
-            .andExpect(jsonPath("$.idPatient").value(DEFAULT_ID_PATIENT.intValue()))
-            .andExpect(jsonPath("$.idStaff").value(DEFAULT_ID_STAFF.intValue()))
-            .andExpect(jsonPath("$.idTypeAttention").value(DEFAULT_ID_TYPE_ATTENTION.intValue()))
             .andExpect(jsonPath("$.date").value(DEFAULT_DATE.toString()));
     }
 
@@ -218,9 +197,6 @@ public class ConsultationResourceIntTest {
         updatedConsultation
             .Diagnosis(UPDATED_DIAGNOSIS)
             .detail(UPDATED_DETAIL)
-            .idPatient(UPDATED_ID_PATIENT)
-            .idStaff(UPDATED_ID_STAFF)
-            .idTypeAttention(UPDATED_ID_TYPE_ATTENTION)
             .date(UPDATED_DATE);
 
         restConsultationMockMvc.perform(put("/api/consultations")
@@ -234,9 +210,6 @@ public class ConsultationResourceIntTest {
         Consultation testConsultation = consultationList.get(consultationList.size() - 1);
         assertThat(testConsultation.getDiagnosis()).isEqualTo(UPDATED_DIAGNOSIS);
         assertThat(testConsultation.getDetail()).isEqualTo(UPDATED_DETAIL);
-        assertThat(testConsultation.getIdPatient()).isEqualTo(UPDATED_ID_PATIENT);
-        assertThat(testConsultation.getIdStaff()).isEqualTo(UPDATED_ID_STAFF);
-        assertThat(testConsultation.getIdTypeAttention()).isEqualTo(UPDATED_ID_TYPE_ATTENTION);
         assertThat(testConsultation.getDate()).isEqualTo(UPDATED_DATE);
     }
 

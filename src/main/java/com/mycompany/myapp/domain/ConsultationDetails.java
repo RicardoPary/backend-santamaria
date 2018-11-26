@@ -30,15 +30,16 @@ public class ConsultationDetails implements Serializable {
     @Column(name = "quantity")
     private Integer quantity;
 
-    @Column(name = "id_staff")
-    private Long idStaff;
-
-    @Column(name = "id_supply")
-    private Long idSupply;
+    @Column(name = "id_consultation")
+    private Long idConsultation;
 
     @ManyToOne
     @JsonIgnoreProperties("")
-    private Consultation consultation;
+    private Supply supply;
+
+    @ManyToOne
+    @JsonIgnoreProperties("")
+    private Staff staff;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
@@ -88,43 +89,43 @@ public class ConsultationDetails implements Serializable {
         this.quantity = quantity;
     }
 
-    public Long getIdStaff() {
-        return idStaff;
+    public Long getIdConsultation() {
+        return idConsultation;
     }
 
-    public ConsultationDetails idStaff(Long idStaff) {
-        this.idStaff = idStaff;
+    public ConsultationDetails idConsultation(Long idConsultation) {
+        this.idConsultation = idConsultation;
         return this;
     }
 
-    public void setIdStaff(Long idStaff) {
-        this.idStaff = idStaff;
+    public void setIdConsultation(Long idConsultation) {
+        this.idConsultation = idConsultation;
     }
 
-    public Long getIdSupply() {
-        return idSupply;
+    public Supply getSupply() {
+        return supply;
     }
 
-    public ConsultationDetails idSupply(Long idSupply) {
-        this.idSupply = idSupply;
+    public ConsultationDetails supply(Supply supply) {
+        this.supply = supply;
         return this;
     }
 
-    public void setIdSupply(Long idSupply) {
-        this.idSupply = idSupply;
+    public void setSupply(Supply supply) {
+        this.supply = supply;
     }
 
-    public Consultation getConsultation() {
-        return consultation;
+    public Staff getStaff() {
+        return staff;
     }
 
-    public ConsultationDetails consultation(Consultation consultation) {
-        this.consultation = consultation;
+    public ConsultationDetails staff(Staff staff) {
+        this.staff = staff;
         return this;
     }
 
-    public void setConsultation(Consultation consultation) {
-        this.consultation = consultation;
+    public void setStaff(Staff staff) {
+        this.staff = staff;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 
@@ -155,8 +156,7 @@ public class ConsultationDetails implements Serializable {
             ", name='" + getName() + "'" +
             ", detail='" + getDetail() + "'" +
             ", quantity=" + getQuantity() +
-            ", idStaff=" + getIdStaff() +
-            ", idSupply=" + getIdSupply() +
+            ", idConsultation=" + getIdConsultation() +
             "}";
     }
 }

@@ -49,11 +49,8 @@ public class ConsultationDetailsResourceIntTest {
     private static final Integer DEFAULT_QUANTITY = 1;
     private static final Integer UPDATED_QUANTITY = 2;
 
-    private static final Long DEFAULT_ID_STAFF = 1L;
-    private static final Long UPDATED_ID_STAFF = 2L;
-
-    private static final Long DEFAULT_ID_SUPPLY = 1L;
-    private static final Long UPDATED_ID_SUPPLY = 2L;
+    private static final Long DEFAULT_ID_CONSULTATION = 1L;
+    private static final Long UPDATED_ID_CONSULTATION = 2L;
 
     @Autowired
     private ConsultationDetailsRepository consultationDetailsRepository;
@@ -99,8 +96,7 @@ public class ConsultationDetailsResourceIntTest {
             .name(DEFAULT_NAME)
             .detail(DEFAULT_DETAIL)
             .quantity(DEFAULT_QUANTITY)
-            .idStaff(DEFAULT_ID_STAFF)
-            .idSupply(DEFAULT_ID_SUPPLY);
+            .idConsultation(DEFAULT_ID_CONSULTATION);
         return consultationDetails;
     }
 
@@ -127,8 +123,7 @@ public class ConsultationDetailsResourceIntTest {
         assertThat(testConsultationDetails.getName()).isEqualTo(DEFAULT_NAME);
         assertThat(testConsultationDetails.getDetail()).isEqualTo(DEFAULT_DETAIL);
         assertThat(testConsultationDetails.getQuantity()).isEqualTo(DEFAULT_QUANTITY);
-        assertThat(testConsultationDetails.getIdStaff()).isEqualTo(DEFAULT_ID_STAFF);
-        assertThat(testConsultationDetails.getIdSupply()).isEqualTo(DEFAULT_ID_SUPPLY);
+        assertThat(testConsultationDetails.getIdConsultation()).isEqualTo(DEFAULT_ID_CONSULTATION);
     }
 
     @Test
@@ -164,8 +159,7 @@ public class ConsultationDetailsResourceIntTest {
             .andExpect(jsonPath("$.[*].name").value(hasItem(DEFAULT_NAME.toString())))
             .andExpect(jsonPath("$.[*].detail").value(hasItem(DEFAULT_DETAIL.toString())))
             .andExpect(jsonPath("$.[*].quantity").value(hasItem(DEFAULT_QUANTITY)))
-            .andExpect(jsonPath("$.[*].idStaff").value(hasItem(DEFAULT_ID_STAFF.intValue())))
-            .andExpect(jsonPath("$.[*].idSupply").value(hasItem(DEFAULT_ID_SUPPLY.intValue())));
+            .andExpect(jsonPath("$.[*].idConsultation").value(hasItem(DEFAULT_ID_CONSULTATION.intValue())));
     }
     
     @Test
@@ -182,8 +176,7 @@ public class ConsultationDetailsResourceIntTest {
             .andExpect(jsonPath("$.name").value(DEFAULT_NAME.toString()))
             .andExpect(jsonPath("$.detail").value(DEFAULT_DETAIL.toString()))
             .andExpect(jsonPath("$.quantity").value(DEFAULT_QUANTITY))
-            .andExpect(jsonPath("$.idStaff").value(DEFAULT_ID_STAFF.intValue()))
-            .andExpect(jsonPath("$.idSupply").value(DEFAULT_ID_SUPPLY.intValue()));
+            .andExpect(jsonPath("$.idConsultation").value(DEFAULT_ID_CONSULTATION.intValue()));
     }
 
     @Test
@@ -210,8 +203,7 @@ public class ConsultationDetailsResourceIntTest {
             .name(UPDATED_NAME)
             .detail(UPDATED_DETAIL)
             .quantity(UPDATED_QUANTITY)
-            .idStaff(UPDATED_ID_STAFF)
-            .idSupply(UPDATED_ID_SUPPLY);
+            .idConsultation(UPDATED_ID_CONSULTATION);
 
         restConsultationDetailsMockMvc.perform(put("/api/consultation-details")
             .contentType(TestUtil.APPLICATION_JSON_UTF8)
@@ -225,8 +217,7 @@ public class ConsultationDetailsResourceIntTest {
         assertThat(testConsultationDetails.getName()).isEqualTo(UPDATED_NAME);
         assertThat(testConsultationDetails.getDetail()).isEqualTo(UPDATED_DETAIL);
         assertThat(testConsultationDetails.getQuantity()).isEqualTo(UPDATED_QUANTITY);
-        assertThat(testConsultationDetails.getIdStaff()).isEqualTo(UPDATED_ID_STAFF);
-        assertThat(testConsultationDetails.getIdSupply()).isEqualTo(UPDATED_ID_SUPPLY);
+        assertThat(testConsultationDetails.getIdConsultation()).isEqualTo(UPDATED_ID_CONSULTATION);
     }
 
     @Test

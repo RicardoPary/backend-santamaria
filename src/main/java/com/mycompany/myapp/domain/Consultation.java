@@ -28,21 +28,20 @@ public class Consultation implements Serializable {
     @Column(name = "detail")
     private String detail;
 
-    @Column(name = "id_patient")
-    private Long idPatient;
-
-    @Column(name = "id_staff")
-    private Long idStaff;
-
-    @Column(name = "id_type_attention")
-    private Long idTypeAttention;
-
     @Column(name = "jhi_date")
     private LocalDate date;
 
     @ManyToOne
     @JsonIgnoreProperties("")
-    private Supply supply;
+    private Patient patient;
+
+    @ManyToOne
+    @JsonIgnoreProperties("")
+    private Staff staff;
+
+    @ManyToOne
+    @JsonIgnoreProperties("")
+    private TypeAttention typeAttention;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
@@ -79,45 +78,6 @@ public class Consultation implements Serializable {
         this.detail = detail;
     }
 
-    public Long getIdPatient() {
-        return idPatient;
-    }
-
-    public Consultation idPatient(Long idPatient) {
-        this.idPatient = idPatient;
-        return this;
-    }
-
-    public void setIdPatient(Long idPatient) {
-        this.idPatient = idPatient;
-    }
-
-    public Long getIdStaff() {
-        return idStaff;
-    }
-
-    public Consultation idStaff(Long idStaff) {
-        this.idStaff = idStaff;
-        return this;
-    }
-
-    public void setIdStaff(Long idStaff) {
-        this.idStaff = idStaff;
-    }
-
-    public Long getIdTypeAttention() {
-        return idTypeAttention;
-    }
-
-    public Consultation idTypeAttention(Long idTypeAttention) {
-        this.idTypeAttention = idTypeAttention;
-        return this;
-    }
-
-    public void setIdTypeAttention(Long idTypeAttention) {
-        this.idTypeAttention = idTypeAttention;
-    }
-
     public LocalDate getDate() {
         return date;
     }
@@ -131,17 +91,43 @@ public class Consultation implements Serializable {
         this.date = date;
     }
 
-    public Supply getSupply() {
-        return supply;
+    public Patient getPatient() {
+        return patient;
     }
 
-    public Consultation supply(Supply supply) {
-        this.supply = supply;
+    public Consultation patient(Patient patient) {
+        this.patient = patient;
         return this;
     }
 
-    public void setSupply(Supply supply) {
-        this.supply = supply;
+    public void setPatient(Patient patient) {
+        this.patient = patient;
+    }
+
+    public Staff getStaff() {
+        return staff;
+    }
+
+    public Consultation staff(Staff staff) {
+        this.staff = staff;
+        return this;
+    }
+
+    public void setStaff(Staff staff) {
+        this.staff = staff;
+    }
+
+    public TypeAttention getTypeAttention() {
+        return typeAttention;
+    }
+
+    public Consultation typeAttention(TypeAttention typeAttention) {
+        this.typeAttention = typeAttention;
+        return this;
+    }
+
+    public void setTypeAttention(TypeAttention typeAttention) {
+        this.typeAttention = typeAttention;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 
@@ -171,9 +157,6 @@ public class Consultation implements Serializable {
             "id=" + getId() +
             ", Diagnosis='" + getDiagnosis() + "'" +
             ", detail='" + getDetail() + "'" +
-            ", idPatient=" + getIdPatient() +
-            ", idStaff=" + getIdStaff() +
-            ", idTypeAttention=" + getIdTypeAttention() +
             ", date='" + getDate() + "'" +
             "}";
     }

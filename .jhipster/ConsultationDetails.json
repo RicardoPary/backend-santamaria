@@ -2,8 +2,14 @@
     "fluentMethods": true,
     "relationships": [
         {
-            "relationshipName": "consultation",
-            "otherEntityName": "consultation",
+            "relationshipName": "supply",
+            "otherEntityName": "supply",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipName": "staff",
+            "otherEntityName": "staff",
             "relationshipType": "many-to-one",
             "otherEntityField": "id"
         }
@@ -22,11 +28,7 @@
             "fieldType": "Integer"
         },
         {
-            "fieldName": "idStaff",
-            "fieldType": "Long"
-        },
-        {
-            "fieldName": "idSupply",
+            "fieldName": "idConsultation",
             "fieldType": "Long"
         }
     ],

@@ -33,20 +33,26 @@
                 <constraints nullable="true" />
             </column>
 
-            <column name="id_staff" type="bigint">
+            <column name="id_consultation" type="bigint">
                 <constraints nullable="true" />
             </column>
 
-            <column name="id_supply" type="bigint">
+            <column name="supply_id" type="bigint">
                 <constraints nullable="true" />
             </column>
 
-            <column name="consultation_id" type="bigint">
+            <column name="staff_id" type="bigint">
                 <constraints nullable="true" />
             </column>
 
             <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here, do not remove-->
         </createTable>
+
+        <loadData encoding="UTF-8"
+                  file="config/liquibase/consultation_details.csv"
+                  separator=";"
+                  tableName="consultation_details">
+        </loadData>
         
     </changeSet>
     <!-- jhipster-needle-liquibase-add-changeset - JHipster will add changesets here, do not remove-->
