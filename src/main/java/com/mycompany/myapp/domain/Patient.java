@@ -36,17 +36,14 @@ public class Patient implements Serializable {
     @Column(name = "birthdate")
     private LocalDate birthdate;
 
-    @Column(name = "nationality")
-    private String nationality;
-
     @Column(name = "address")
     private String address;
 
     @Column(name = "phone")
     private Long phone;
 
-    @Column(name = "email")
-    private String email;
+    @Column(name = "responsable")
+    private String responsable;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
@@ -122,19 +119,6 @@ public class Patient implements Serializable {
         this.birthdate = birthdate;
     }
 
-    public String getNationality() {
-        return nationality;
-    }
-
-    public Patient nationality(String nationality) {
-        this.nationality = nationality;
-        return this;
-    }
-
-    public void setNationality(String nationality) {
-        this.nationality = nationality;
-    }
-
     public String getAddress() {
         return address;
     }
@@ -161,17 +145,17 @@ public class Patient implements Serializable {
         this.phone = phone;
     }
 
-    public String getEmail() {
-        return email;
+    public String getResponsable() {
+        return responsable;
     }
 
-    public Patient email(String email) {
-        this.email = email;
+    public Patient responsable(String responsable) {
+        this.responsable = responsable;
         return this;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setResponsable(String responsable) {
+        this.responsable = responsable;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 
@@ -204,10 +188,9 @@ public class Patient implements Serializable {
             ", lastName='" + getLastName() + "'" +
             ", gender='" + getGender() + "'" +
             ", birthdate='" + getBirthdate() + "'" +
-            ", nationality='" + getNationality() + "'" +
             ", address='" + getAddress() + "'" +
             ", phone=" + getPhone() +
-            ", email='" + getEmail() + "'" +
+            ", responsable='" + getResponsable() + "'" +
             "}";
     }
 }

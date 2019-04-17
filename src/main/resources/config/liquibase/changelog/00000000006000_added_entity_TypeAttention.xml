@@ -35,8 +35,7 @@
         <loadData encoding="UTF-8"
                   file="config/liquibase/type_attention.csv"
                   separator=";"
-                  tableName="type_attention">
-        </loadData>
+                  tableName="type_attention"/>
         
     </changeSet>
     <!-- jhipster-needle-liquibase-add-changeset - JHipster will add changesets here, do not remove-->

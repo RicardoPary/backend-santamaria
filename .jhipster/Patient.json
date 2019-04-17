@@ -24,10 +24,6 @@
             "fieldType": "LocalDate"
         },
         {
-            "fieldName": "nationality",
-            "fieldType": "String"
-        },
-        {
             "fieldName": "address",
             "fieldType": "String"
         },
@@ -36,7 +32,7 @@
             "fieldType": "Long"
         },
         {
-            "fieldName": "email",
+            "fieldName": "responsable",
             "fieldType": "String"
         }
     ],

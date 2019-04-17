@@ -71,8 +71,7 @@
         <loadData encoding="UTF-8"
                   file="config/liquibase/staff.csv"
                   separator=";"
-                  tableName="staff">
-        </loadData>
+                  tableName="staff"/>
         
     </changeSet>
     <!-- jhipster-needle-liquibase-add-changeset - JHipster will add changesets here, do not remove-->

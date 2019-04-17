@@ -41,10 +41,6 @@
                 <constraints nullable="true" />
             </column>
 
-            <column name="nationality" type="varchar(255)">
-                <constraints nullable="true" />
-            </column>
-
             <column name="address" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
@@ -53,7 +49,7 @@
                 <constraints nullable="true" />
             </column>
 
-            <column name="email" type="varchar(255)">
+            <column name="responsable" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
 
@@ -63,8 +59,7 @@
         <loadData encoding="UTF-8"
                   file="config/liquibase/patient.csv"
                   separator=";"
-                  tableName="patient">
-        </loadData>
+                  tableName="patient"/>
 
     </changeSet>
     <!-- jhipster-needle-liquibase-add-changeset - JHipster will add changesets here, do not remove-->

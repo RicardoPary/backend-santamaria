@@ -59,9 +59,7 @@
         <loadData encoding="UTF-8"
                   file="config/liquibase/provider.csv"
                   separator=";"
-                  tableName="provider">
-        </loadData>
-
+                  tableName="provider"/>
         
     </changeSet>
     <!-- jhipster-needle-liquibase-add-changeset - JHipster will add changesets here, do not remove-->

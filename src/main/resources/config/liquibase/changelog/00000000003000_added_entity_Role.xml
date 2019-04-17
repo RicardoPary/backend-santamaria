@@ -41,6 +41,11 @@
             </column>
         </createTable>
 
+        <loadData encoding="UTF-8"
+                  file="config/liquibase/role.csv"
+                  separator=";"
+                  tableName="role"/>
+
         <addPrimaryKey columnNames="roles_id, accesses_id" tableName="role_access"/>
         
     </changeSet>

@@ -55,8 +55,7 @@
         <loadData encoding="UTF-8"
                   file="config/liquibase/inventory.csv"
                   separator=";"
-                  tableName="inventory">
-        </loadData>
+                  tableName="inventory"/>
         
     </changeSet>
     <!-- jhipster-needle-liquibase-add-changeset - JHipster will add changesets here, do not remove-->

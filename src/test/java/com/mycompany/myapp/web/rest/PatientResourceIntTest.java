@@ -57,17 +57,14 @@ public class PatientResourceIntTest {
     private static final LocalDate DEFAULT_BIRTHDATE = LocalDate.ofEpochDay(0L);
     private static final LocalDate UPDATED_BIRTHDATE = LocalDate.now(ZoneId.systemDefault());
 
-    private static final String DEFAULT_NATIONALITY = "AAAAAAAAAA";
-    private static final String UPDATED_NATIONALITY = "BBBBBBBBBB";
-
     private static final String DEFAULT_ADDRESS = "AAAAAAAAAA";
     private static final String UPDATED_ADDRESS = "BBBBBBBBBB";
 
     private static final Long DEFAULT_PHONE = 1L;
     private static final Long UPDATED_PHONE = 2L;
 
-    private static final String DEFAULT_EMAIL = "AAAAAAAAAA";
-    private static final String UPDATED_EMAIL = "BBBBBBBBBB";
+    private static final String DEFAULT_RESPONSABLE = "AAAAAAAAAA";
+    private static final String UPDATED_RESPONSABLE = "BBBBBBBBBB";
 
     @Autowired
     private PatientRepository patientRepository;
@@ -115,10 +112,9 @@ public class PatientResourceIntTest {
             .lastName(DEFAULT_LAST_NAME)
             .gender(DEFAULT_GENDER)
             .birthdate(DEFAULT_BIRTHDATE)
-            .nationality(DEFAULT_NATIONALITY)
             .address(DEFAULT_ADDRESS)
             .phone(DEFAULT_PHONE)
-            .email(DEFAULT_EMAIL);
+            .responsable(DEFAULT_RESPONSABLE);
         return patient;
     }
 
@@ -147,10 +143,9 @@ public class PatientResourceIntTest {
         assertThat(testPatient.getLastName()).isEqualTo(DEFAULT_LAST_NAME);
         assertThat(testPatient.getGender()).isEqualTo(DEFAULT_GENDER);
         assertThat(testPatient.getBirthdate()).isEqualTo(DEFAULT_BIRTHDATE);
-        assertThat(testPatient.getNationality()).isEqualTo(DEFAULT_NATIONALITY);
         assertThat(testPatient.getAddress()).isEqualTo(DEFAULT_ADDRESS);
         assertThat(testPatient.getPhone()).isEqualTo(DEFAULT_PHONE);
-        assertThat(testPatient.getEmail()).isEqualTo(DEFAULT_EMAIL);
+        assertThat(testPatient.getResponsable()).isEqualTo(DEFAULT_RESPONSABLE);
     }
 
     @Test
@@ -188,10 +183,9 @@ public class PatientResourceIntTest {
             .andExpect(jsonPath("$.[*].lastName").value(hasItem(DEFAULT_LAST_NAME.toString())))
             .andExpect(jsonPath("$.[*].gender").value(hasItem(DEFAULT_GENDER.toString())))
             .andExpect(jsonPath("$.[*].birthdate").value(hasItem(DEFAULT_BIRTHDATE.toString())))
-            .andExpect(jsonPath("$.[*].nationality").value(hasItem(DEFAULT_NATIONALITY.toString())))
             .andExpect(jsonPath("$.[*].address").value(hasItem(DEFAULT_ADDRESS.toString())))
             .andExpect(jsonPath("$.[*].phone").value(hasItem(DEFAULT_PHONE.intValue())))
-            .andExpect(jsonPath("$.[*].email").value(hasItem(DEFAULT_EMAIL.toString())));
+            .andExpect(jsonPath("$.[*].responsable").value(hasItem(DEFAULT_RESPONSABLE.toString())));
     }
     
     @Test
@@ -210,10 +204,9 @@ public class PatientResourceIntTest {
             .andExpect(jsonPath("$.lastName").value(DEFAULT_LAST_NAME.toString()))
             .andExpect(jsonPath("$.gender").value(DEFAULT_GENDER.toString()))
             .andExpect(jsonPath("$.birthdate").value(DEFAULT_BIRTHDATE.toString()))
-            .andExpect(jsonPath("$.nationality").value(DEFAULT_NATIONALITY.toString()))
             .andExpect(jsonPath("$.address").value(DEFAULT_ADDRESS.toString()))
             .andExpect(jsonPath("$.phone").value(DEFAULT_PHONE.intValue()))
-            .andExpect(jsonPath("$.email").value(DEFAULT_EMAIL.toString()));
+            .andExpect(jsonPath("$.responsable").value(DEFAULT_RESPONSABLE.toString()));
     }
 
     @Test
@@ -242,10 +235,9 @@ public class PatientResourceIntTest {
             .lastName(UPDATED_LAST_NAME)
             .gender(UPDATED_GENDER)
             .birthdate(UPDATED_BIRTHDATE)
-            .nationality(UPDATED_NATIONALITY)
             .address(UPDATED_ADDRESS)
             .phone(UPDATED_PHONE)
-            .email(UPDATED_EMAIL);
+            .responsable(UPDATED_RESPONSABLE);
 
         restPatientMockMvc.perform(put("/api/patients")
             .contentType(TestUtil.APPLICATION_JSON_UTF8)
@@ -261,10 +253,9 @@ public class PatientResourceIntTest {
         assertThat(testPatient.getLastName()).isEqualTo(UPDATED_LAST_NAME);
         assertThat(testPatient.getGender()).isEqualTo(UPDATED_GENDER);
         assertThat(testPatient.getBirthdate()).isEqualTo(UPDATED_BIRTHDATE);
-        assertThat(testPatient.getNationality()).isEqualTo(UPDATED_NATIONALITY);
         assertThat(testPatient.getAddress()).isEqualTo(UPDATED_ADDRESS);
         assertThat(testPatient.getPhone()).isEqualTo(UPDATED_PHONE);
-        assertThat(testPatient.getEmail()).isEqualTo(UPDATED_EMAIL);
+        assertThat(testPatient.getResponsable()).isEqualTo(UPDATED_RESPONSABLE);
     }
 
     @Test

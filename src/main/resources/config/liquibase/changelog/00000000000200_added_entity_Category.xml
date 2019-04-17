@@ -51,8 +51,7 @@
         <loadData encoding="UTF-8"
                   file="config/liquibase/category.csv"
                   separator=";"
-                  tableName="category">
-        </loadData>
+                  tableName="category"/>
         
     </changeSet>
     <!-- jhipster-needle-liquibase-add-changeset - JHipster will add changesets here, do not remove-->
